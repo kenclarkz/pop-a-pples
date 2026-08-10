@@ -30,9 +30,7 @@ public/assets/
 │   ├── apple-gift-box.svg
 │   └── README.md
 ├── video/
-│   ├── applevideo.mp4         # Hero scrub video (HEVC)
-│   ├── applevideo-h264.mp4    # Hero scrub video (H.264)
-│   └── applevideo-poster.jpg
+│   └── POP.mp4               # Hero scrub video (homepage)
 └── sequences/
     ├── apple-arrive/          # PNG sequence or MP4 for Scene 1
     │   ├── frame-0001.png

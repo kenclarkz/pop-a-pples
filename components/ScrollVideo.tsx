@@ -6,24 +6,25 @@ import { asset } from '@/lib/paths'
 import { cn } from '@/lib/utils'
 import { site } from '@/data/site'
 
+// Mobile devices get a shorter scroll runway so the clip scrubs at a
+// comfortable, buttery pace; desktop keeps the full cinematic length.
 const SCRUB_VH = 300
+const SCRUB_VH_MOBILE = 170
 
-const HEVC_SRC = asset('/assets/video/applevideo.mp4')
-const H264_SRC = asset('/assets/video/applevideo-h264.mp4')
-const POSTER_SRC = asset('/assets/video/applevideo-poster.jpg')
+const VIDEO_SRC = asset('/assets/video/POP.mp4')
 const HERO_PHOTO = asset('/assets/journey/hero.png')
 
 /**
  * Full-screen hero that scrubs with the page scroll.
  *
- * Preferred: a video (`applevideo.mp4` + `applevideo-h264.mp4`) whose
- * `currentTime` is mapped linearly to scroll position, so the clip plays
- * forward and back with the wheel. Seeks are throttled to one per animation
- * frame and only when the target time actually changes.
+ * Preferred: a video (`public/assets/video/POP.mp4`) whose `currentTime` is
+ * mapped linearly to scroll position, so the clip plays forward and back with
+ * the wheel. Seeks are throttled to one per animation frame and only when the
+ * target time actually changes.
  *
- * Fallback: if no video files exist (fresh template), the hero photo from
+ * Fallback: if the video is missing or unplayable, the hero photo from
  * `public/assets/journey/hero.png` is shown with a slow Ken Burns zoom so the
- * page still feels alive until a video is dropped in.
+ * page still feels alive.
  */
 export default function ScrollVideo() {
   const wrapRef = useRef<HTMLDivElement>(null)
@@ -31,11 +32,13 @@ export default function ScrollVideo() {
   const [ready, setReady] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [hasVideo, setHasVideo] = useState<boolean | null>(null)
+  const [videoFailed, setVideoFailed] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
-  // Detect whether a hero video exists in /public.
+  // Detect whether the hero video exists in /public.
   useEffect(() => {
     let cancelled = false
-    fetch(HEVC_SRC, { method: 'HEAD' })
+    fetch(VIDEO_SRC, { method: 'HEAD' })
       .then((res) => {
         if (!cancelled) setHasVideo(res.ok)
       })
@@ -45,6 +48,15 @@ export default function ScrollVideo() {
     return () => {
       cancelled = true
     }
+  }, [])
+
+  // Track viewport size so mobile gets a shorter, smoother scrub distance.
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    setIsMobile(mq.matches)
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
   }, [])
 
   useEffect(() => {
@@ -110,12 +122,17 @@ export default function ScrollVideo() {
     }
   }, [])
 
+  const isPhoto = hasVideo === false || videoFailed
   const showLoader = hasVideo !== false && !ready
-  const isPhoto = hasVideo === false
+  const scrubVh = isMobile ? SCRUB_VH_MOBILE : SCRUB_VH
 
   return (
     <>
-      <div ref={wrapRef} style={{ height: isPhoto ? '150svh' : `${SCRUB_VH}svh` }} aria-hidden />
+      <div
+        ref={wrapRef}
+        style={{ height: isPhoto ? '150svh' : `${scrubVh}svh` }}
+        aria-hidden
+      />
 
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-espresso">
         {isPhoto ? (
@@ -135,11 +152,15 @@ export default function ScrollVideo() {
             className="h-full w-full object-contain md:object-cover scale-[1.3] md:scale-100"
             playsInline
             muted
+            autoPlay
             preload="auto"
-            poster={POSTER_SRC}
+            controls={false}
+            disablePictureInPicture
+            aria-hidden
+            poster={HERO_PHOTO}
+            onError={() => setVideoFailed(true)}
           >
-            <source src={HEVC_SRC} type='video/mp4; codecs="hvc1.1.6.L93.B0"' />
-            <source src={H264_SRC} type='video/mp4; codecs="avc1.64001f"' />
+            <source src={VIDEO_SRC} type="video/mp4" />
           </video>
         )}
 
