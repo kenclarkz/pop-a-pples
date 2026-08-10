@@ -47,7 +47,7 @@ export function Navigation() {
       )}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-24 lg:h-32">
+        <div className="flex items-center justify-between h-48 lg:h-80">
           {/* Brand */}
           <Link
             href="/"
@@ -57,9 +57,9 @@ export function Navigation() {
             <Image
               src={asset('/assets/journey/no_angle_202608101113-jukebox-bg-removed.png')}
               alt={`${site.name} logo`}
-              width={45}
-              height={80}
-              className="h-16 lg:h-24 w-auto object-contain"
+              width={160}
+              height={288}
+              className="h-40 lg:h-72 w-auto object-contain"
               priority
             />
           </Link>
