@@ -1,5 +1,10 @@
 import ScrollVideo from '@/components/ScrollVideo'
+import ScrollController from '@/components/ScrollController'
 
 export default function Home() {
-  return <ScrollVideo />
+  return (
+    <ScrollController>
+      <ScrollVideo />
+    </ScrollController>
+  )
 }

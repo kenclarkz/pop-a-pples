@@ -4,22 +4,28 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { asset } from '@/lib/paths'
 import { cn } from '@/lib/utils'
+import { useIsMobile } from '@/lib/assets'
 import { site } from '@/data/site'
 
 const SCRUB_VH = 300
 
-const HEVC_SRC = asset('/assets/video/applevideo.mp4')
-const H264_SRC = asset('/assets/video/applevideo-h264.mp4')
-const POSTER_SRC = asset('/assets/video/applevideo-poster.jpg')
+const HEVC_SRC = asset('/assets/video/POP.mp4')
+const H264_SRC = asset('/assets/video/POP-h264.mp4')
+const POSTER_SRC = asset('/assets/video/POP-poster.jpg')
 const HERO_PHOTO = asset('/assets/journey/hero.png')
 
 /**
  * Full-screen hero that scrubs with the page scroll.
  *
- * Preferred: a video (`applevideo.mp4` + `applevideo-h264.mp4`) whose
- * `currentTime` is mapped linearly to scroll position, so the clip plays
- * forward and back with the wheel. Seeks are throttled to one per animation
- * frame and only when the target time actually changes.
+ * Preferred: a video (`POP.mp4` + `POP-h264.mp4`) whose `currentTime` is
+ * mapped linearly to scroll position, so the clip plays forward and back with
+ * the wheel. Seeks are throttled to one per animation frame and only when the
+ * target time actually changes.
+ *
+ * Mobile optimisation: H.264 is offered first (broadest device support), the
+ * clip is `preload="metadata"` so low-end phones don't download the whole file,
+ * seeks are less frequent to keep the scrub smooth on weaker GPUs, and the
+ * video is scaled up with `object-contain` to avoid letterbox bars in portrait.
  *
  * Fallback: if no video files exist (fresh template), the hero photo from
  * `public/assets/journey/hero.png` is shown with a slow Ken Burns zoom so the
@@ -31,13 +37,17 @@ export default function ScrollVideo() {
   const [ready, setReady] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [hasVideo, setHasVideo] = useState<boolean | null>(null)
+  const isMobile = useIsMobile()
 
   // Detect whether a hero video exists in /public.
   useEffect(() => {
     let cancelled = false
-    fetch(HEVC_SRC, { method: 'HEAD' })
-      .then((res) => {
-        if (!cancelled) setHasVideo(res.ok)
+    Promise.all([
+      fetch(HEVC_SRC, { method: 'HEAD' }),
+      fetch(H264_SRC, { method: 'HEAD' }),
+    ])
+      .then(([hevc, h264]) => {
+        if (!cancelled) setHasVideo(hevc.ok || h264.ok)
       })
       .catch(() => {
         if (!cancelled) setHasVideo(false)
@@ -51,6 +61,9 @@ export default function ScrollVideo() {
     const video = videoRef.current
     if (!video || typeof window === 'undefined') return
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
+    // Mobile: fewer, coarser seeks keep the scrub smooth on low-end devices.
+    const seekThreshold = isMobile ? 0.05 : 0.02
 
     let raf = 0
     let lastTime = -1
@@ -92,7 +105,7 @@ export default function ScrollVideo() {
 
       const p = Math.min(1, Math.max(0, window.scrollY / total))
       const t = p * dur
-      if (Math.abs(t - lastTime) > 0.02) {
+      if (Math.abs(t - lastTime) > seekThreshold) {
         lastTime = t
         video.currentTime = t
       }
@@ -108,7 +121,7 @@ export default function ScrollVideo() {
       video.removeEventListener('loadeddata', markReady)
       video.removeEventListener('canplay', markReady)
     }
-  }, [])
+  }, [isMobile])
 
   const showLoader = hasVideo !== false && !ready
   const isPhoto = hasVideo === false
@@ -135,11 +148,16 @@ export default function ScrollVideo() {
             className="h-full w-full object-contain md:object-cover scale-[1.3] md:scale-100"
             playsInline
             muted
-            preload="auto"
+            disablePictureInPicture
+            disableRemotePlayback
+            preload={isMobile ? 'metadata' : 'auto'}
             poster={POSTER_SRC}
           >
-            <source src={HEVC_SRC} type='video/mp4; codecs="hvc1.1.6.L93.B0"' />
-            <source src={H264_SRC} type='video/mp4; codecs="avc1.64001f"' />
+            {/* H.264 first on mobile for the widest device support; HEVC on
+                desktop for Safari efficiency. */}
+            {isMobile && <source src={H264_SRC} type='video/mp4; codecs="avc1.64001f"' />}
+            <source src={HEVC_SRC} type='video/mp4; codecs="hvc1.1.6.L96.B0"' />
+            {!isMobile && <source src={H264_SRC} type='video/mp4; codecs="avc1.64001f"' />}
           </video>
         )}
 

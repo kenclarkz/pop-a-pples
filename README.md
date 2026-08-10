@@ -27,8 +27,9 @@ clone it, drop in new media, and push a brand-new site.
 
 ### Cinematic Homepage Experience
 - **Scroll-scrubbed hero video** — a full-screen video that plays forward/back
-  with the wheel (`public/assets/video/applevideo.mp4`). If no video exists,
-  it falls back to a slow Ken Burns zoom on `public/assets/journey/hero.png`.
+  with the wheel (`public/assets/video/POP.mp4`). Mobile-optimised (H.264
+  first, lazy preload, smooth scrubbing). If no video exists, it falls back to
+  a slow Ken Burns zoom on `public/assets/journey/hero.png`.
 - **6 scroll-driven chapters** telling the apple journey: The Apple → Orchard → Dip → Toppings → Set → Reveal
 - **Photo-driven** — drop a photo per chapter into `public/assets/journey/` and it replaces the placeholder automatically (no code changes)
 - **Fire burn transitions** — a full-screen WebGL layer shows the current photo and, when you scroll to the next chapter, consumes it with a flame-edged fire effect revealing the next photo
@@ -135,7 +136,7 @@ node tools/generate-placeholders.mjs
 │   ├── products/*.svg           # Product card images
 │   ├── journey/                 # Drop chapter photos here (hero, orchard, dip, toppings, set, reveal)
 │   ├── apple/                   # Drop apple.glb here
-│   └── video/                   # Drop applevideo.mp4 + applevideo-h264.mp4 here
+│   └── video/                   # Drop POP.mp4 + POP-h264.mp4 here
 ├── tools/generate-placeholders.mjs  # Regenerate all placeholder media
 ├── BLENDER_GUIDE.md             # Full Blender integration docs
 ├── .github/workflows/ci.yml     # GitHub Actions CI
@@ -172,10 +173,14 @@ with zero config. Set `NEXT_PUBLIC_BASE_PATH` to override.
 Drop a scrub-friendly MP4 into `public/assets/video/`:
 
 ```
-public/assets/video/applevideo.mp4            # HEVC/H.265 (preferred on Safari)
-public/assets/video/applevideo-h264.mp4       # H.264 fallback (Android/desktop)
-public/assets/video/applevideo-poster.jpg     # poster frame
+public/assets/video/POP.mp4            # HEVC/H.265 (preferred on Safari)
+public/assets/video/POP-h264.mp4       # H.264 fallback (Android/mobile/desktop)
+public/assets/video/POP-poster.jpg     # poster frame
 ```
+
+Drop your exported `POP.mp4` (and a mobile-friendly `POP-h264.mp4`) into that
+folder with these exact names and the homepage scrub video updates
+automatically — no code changes needed.
 
 No video? The hero falls back to `public/assets/journey/hero.png` with a slow
 zoom — the template never looks broken.
