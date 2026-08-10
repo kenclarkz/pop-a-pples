@@ -55,11 +55,11 @@ export function Navigation() {
             aria-label={`${site.name} home`}
           >
             <Image
-              src={asset('/assets/brand/logo.png')}
+              src={asset('/assets/journey/no_angle_202608101113-jukebox-bg-removed.png')}
               alt={`${site.name} logo`}
-              width={40}
-              height={40}
-              className="rounded-full object-cover"
+              width={45}
+              height={80}
+              className="h-12 lg:h-16 w-auto object-contain"
               priority
             />
           </Link>
