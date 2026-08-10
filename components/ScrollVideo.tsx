@@ -145,7 +145,7 @@ export default function ScrollVideo() {
         ) : (
           <video
             ref={videoRef}
-            className="h-full w-full object-contain md:object-cover scale-[1.3] md:scale-100"
+            className="h-full w-full object-contain md:object-cover scale-[1.15] md:scale-90"
             playsInline
             muted
             disablePictureInPicture
