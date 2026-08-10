@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="80%">
+      <stop offset="0%" stop-color="#241509"/>
+      <stop offset="100%" stop-color="#120C08"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#C8402E" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C8402E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#halo)"/>
+
+      <ellipse cx="800" cy="702" rx="544" ry="45" fill="#4A3224" opacity="0.5"/>
+      
+    <g transform="translate(800 450) scale(3.9)">
+      <path d="M100 155 C 60 155 30 120 30 82 C 30 40 70 22 100 55 C 130 22 170 40 170 82 C 170 120 140 155 100 155 Z" fill="#C8402E" transform="translate(-100 -100)"/>
+      <path d="M100 155 C 60 155 30 120 30 82 C 30 40 70 22 100 55 C 130 22 170 40 170 82 C 170 120 140 155 100 155 Z" fill="#D9502F" transform="translate(-88 -106) scale(0.9)"/>
+      <rect x="-4" y="-150" width="9" height="40" rx="4.5" fill="#6B4226" transform="rotate(12)"/>
+      <path d="M0 -130 Q -45 -185 -90 -170 Q -45 -150 0 -130 Z" fill="#4E9C4E"/>
+    </g>
+      <rect x="576" y="108" width="448.00000000000006" height="27" rx="14" fill="#C9A96A" opacity="0.35"/>
+      <rect x="640" y="162" width="320" height="22.5" rx="12" fill="#C9A96A" opacity="0.25"/>
+      <text x="800" y="810" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#F6EFE3" opacity="0.85">Chapter 05 — The Set</text>
+</svg>

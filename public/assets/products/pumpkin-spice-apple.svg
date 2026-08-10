@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="80%">
+      <stop offset="0%" stop-color="#241509"/>
+      <stop offset="100%" stop-color="#120C08"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#C8402E" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C8402E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <rect width="600" height="600" fill="url(#halo)"/>
+
+        
+    <g transform="translate(300 264) scale(1.95)">
+      <path d="M100 155 C 60 155 30 120 30 82 C 30 40 70 22 100 55 C 130 22 170 40 170 82 C 170 120 140 155 100 155 Z" fill="#C0692E" transform="translate(-100 -100)"/>
+      <path d="M100 155 C 60 155 30 120 30 82 C 30 40 70 22 100 55 C 130 22 170 40 170 82 C 170 120 140 155 100 155 Z" fill="#D9A36A" transform="translate(-88 -106) scale(0.9)"/>
+      <rect x="-4" y="-150" width="9" height="40" rx="4.5" fill="#6B4226" transform="rotate(12)"/>
+      <path d="M0 -130 Q -45 -185 -90 -170 Q -45 -150 0 -130 Z" fill="#4E9C4E"/>
+    </g>
+        <rect x="379.5" y="263" width="6" height="2" rx="1" fill="#6B4226" transform="rotate(0 382.5 264)"/>
+<rect x="399.8722692991545" y="305.61108913580716" width="6" height="2" rx="1" fill="#C8894B" transform="rotate(47 402.8722692991545 306.61108913580716)"/>
+<rect x="392.2201325831317" y="358.2201325831317" width="6" height="2" rx="1" fill="#4E9C4E" transform="rotate(94 395.2201325831317 359.2201325831317)"/>
+<rect x="353.62473459365333" y="399.7042022217749" width="6" height="2" rx="1" fill="#A62E20" transform="rotate(141 356.62473459365333 400.7042022217749)"/>
+<rect x="297" y="411.7131955294882" width="6" height="2" rx="1" fill="#6B4226" transform="rotate(8 300 412.7131955294882)"/>
+<rect x="244.66595546155946" y="389.3455600985408" width="6" height="2" rx="1" fill="#C8894B" transform="rotate(55 247.66595546155946 390.3455600985408)"/>
+<rect x="216.1151272160414" y="343.8848727839586" width="6" height="2" rx="1" fill="#4E9C4E" transform="rotate(102 219.1151272160414 344.8848727839586)"/>
+<rect x="217.63548554419157" y="295.8738582587514" width="6" height="2" rx="1" fill="#A62E20" transform="rotate(149 220.63548554419157 296.8738582587514)"/>
+<rect x="188.76559181329154" y="263" width="6" height="2" rx="1" fill="#6B4226" transform="rotate(16 191.76559181329154 264)"/>
+<rect x="174.6459637671241" y="212.31929878125374" width="6" height="2" rx="1" fill="#C8894B" transform="rotate(63 177.6459637671241 213.31929878125374)"/>
+<rect x="193.0161470092675" y="159.01614700926757" width="6" height="2" rx="1" fill="#4E9C4E" transform="rotate(110 196.0161470092675 160.01614700926757)"/>
+<rect x="239.86904568207825" y="125.07367525435578" width="6" height="2" rx="1" fill="#A62E20" transform="rotate(157 242.86904568207825 126.07367525435578)"/>
+<rect x="297" y="124.2887347417246" width="6" height="2" rx="1" fill="#6B4226" transform="rotate(24 300 125.2887347417246)"/>
+<rect x="341.90702056081096" y="154.58486191632284" width="6" height="2" rx="1" fill="#C8894B" transform="rotate(71 344.90702056081096 155.58486191632284)"/>
+<rect x="360.1435070507659" y="199.8564929492341" width="6" height="2" rx="1" fill="#4E9C4E" transform="rotate(118 363.1435070507659 200.8564929492341)"/>
+<rect x="394.0583531633812" y="222.79711377812987" width="6" height="2" rx="1" fill="#A62E20" transform="rotate(165 397.0583531633812 223.79711377812987)"/>
+        <g transform="translate(420 168.00000000000003) rotate(20)"><path d="M0 0 Q 40 -40 80 0 Q 40 40 0 0 Z" fill="#4E9C4E"/></g>
+  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A96A" opacity="0.75">Pumpkin Spice</text>
+</svg>
