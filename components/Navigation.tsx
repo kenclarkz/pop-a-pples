@@ -47,7 +47,7 @@ export function Navigation() {
       )}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-48 lg:h-80">
+        <div className="flex items-center justify-between h-14 lg:h-16">
           {/* Brand */}
           <Link
             href="/"
@@ -59,7 +59,7 @@ export function Navigation() {
               alt={`${site.name} logo`}
               width={160}
               height={288}
-              className="h-40 lg:h-72 w-auto object-contain"
+              className="h-24 lg:h-36 w-auto object-contain"
               priority
             />
           </Link>
