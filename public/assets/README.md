@@ -30,9 +30,9 @@ public/assets/
 ├── apple/                     # 3D reveal apple GLB
 │   └── apple.glb              # Drop your Blender export here
 ├── video/                     # Hero scrub video
-│   ├── applevideo.mp4         # HEVC/H.265 (Safari)
-│   ├── applevideo-h264.mp4    # H.264 fallback (desktop/Android)
-│   └── applevideo-poster.jpg  # Poster frame
+│   ├── POP.mp4                # HEVC/H.265 (Safari)
+│   ├── POP-h264.mp4           # H.264 fallback (mobile/desktop/Android)
+│   └── POP-poster.jpg         # Poster frame
 └── sequences/                 # PNG sequences / MP4 clips (see its README)
 ```
 
