@@ -154,10 +154,12 @@ export default function ScrollVideo() {
             poster={POSTER_SRC}
           >
             {/* H.264 first on mobile for the widest device support; HEVC on
-                desktop for Safari efficiency. */}
-            {isMobile && <source src={H264_SRC} type='video/mp4; codecs="avc1.64001f"' />}
-            <source src={HEVC_SRC} type='video/mp4; codecs="hvc1.1.6.L96.B0"' />
-            {!isMobile && <source src={H264_SRC} type='video/mp4; codecs="avc1.64001f"' />}
+                desktop for Safari efficiency. Both files can point to the same
+                upload, so the browser tries each in turn and plays whichever
+                codec it can decode. */}
+            {isMobile && <source src={H264_SRC} type="video/mp4" />}
+            <source src={HEVC_SRC} type="video/mp4" />
+            {!isMobile && <source src={H264_SRC} type="video/mp4" />}
           </video>
         )}
 
