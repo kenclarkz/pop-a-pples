@@ -7,7 +7,7 @@ import {
   getProductsBySection,
   type CategoryId,
 } from '@/data/products'
-import { ProductShowcase } from '@/components/ProductShowcase'
+import { ProductGrid } from '@/components/ProductGrid'
 import { Reveal } from '@/components/Reveal'
 import { asset } from '@/lib/paths'
 import { site } from '@/data/site'
@@ -45,7 +45,7 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen">
       {/* Hero */}
-      <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden px-6">
+      <section className="relative min-h-[70vh] flex items-center justify-center px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-espresso via-espresso to-espresso-dark" />
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url("${asset('/assets/brand/hero-pattern.svg')}")` }} />
         <div className="relative z-10 max-w-4xl text-center">
@@ -54,9 +54,9 @@ export default function ProductsPage() {
             Three ways to<br />beat the heat.
           </Reveal>
           <Reveal delay={0.2} className="text-lg sm:text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed mb-10">
-            Step into the showcase — every item on its own cinematic stage.
-            Tap a product to open the full experience, pick a size, and
-            we&apos;ll have it ready for delivery or pickup.
+            Scroll through Gourmet Apples, Lemonade and Italian Ice — every item
+            plays a short film of the real thing. Pick your favourite, choose a
+            size, and we&apos;ll have it ready for delivery or pickup.
           </Reveal>
           <Reveal delay={0.3} className="flex flex-wrap items-center justify-center gap-3">
             <span className="flex items-center gap-2 text-cream/60 text-sm">
@@ -82,26 +82,26 @@ export default function ProductsPage() {
       {/* Sub-section navigation — sticks under the main nav while scrolling */}
       <nav
         aria-label="Menu sub-sections"
-        className="sticky top-16 sm:top-20 z-40 border-y border-cream/10 bg-espresso/80 px-6 py-4 backdrop-blur"
+        className="sticky top-16 sm:top-20 z-40 px-6 py-4 border-y border-cream/10 bg-espresso/80 backdrop-blur"
       >
-        <div className="no-scrollbar mx-auto flex max-w-7xl items-center gap-3 overflow-x-auto">
+        <div className="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto no-scrollbar">
           {MENU_SECTIONS.map((section) => (
             <button
               key={section.id}
               onClick={() => scrollToSection(section.id)}
               aria-current={activeSection === section.id ? 'true' : undefined}
               className={cn(
-                'whitespace-nowrap rounded-full px-5 py-2.5 text-[0.7rem] uppercase tracking-[0.2em] font-medium transition-all duration-300',
+                'whitespace-nowrap px-5 py-2.5 rounded-full text-[0.7rem] uppercase tracking-[0.2em] font-medium transition-all duration-300',
                 activeSection === section.id
                   ? 'bg-gold text-espresso shadow-[0_4px_20px_-4px_rgba(201,137,75,0.5)]'
-                  : 'border border-cream/10 bg-cream/5 text-cream/70 hover:border-gold hover:text-gold'
+                  : 'bg-cream/5 border border-cream/10 text-cream/70 hover:border-gold hover:text-gold'
               )}
             >
               {section.label}
             </button>
           ))}
-          <span className="ml-auto hidden whitespace-nowrap items-center gap-2 text-[0.62rem] uppercase tracking-[0.25em] text-cream/40 md:flex">
-            Tap a product to explore
+          <span className="ml-auto hidden md:flex items-center gap-2 text-[0.62rem] uppercase tracking-[0.25em] text-cream/40 whitespace-nowrap">
+            Scroll to browse
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M12 5v14M19 12l-7 7-7-7" />
             </svg>
@@ -109,7 +109,7 @@ export default function ProductsPage() {
         </div>
       </nav>
 
-      {/* The three menu sub-sections — each a cinematic showcase */}
+      {/* The three menu sub-sections */}
       {MENU_SECTIONS.map((section, i) => {
         const items = getProductsBySection(section.id)
         return (
@@ -118,31 +118,53 @@ export default function ProductsPage() {
             id={section.id}
             aria-labelledby={`${section.id}-title`}
             className={cn(
-              'relative overflow-x-clip border-t border-cream/10 px-4 py-20 sm:px-6 sm:py-28',
+              'relative px-6 py-20 sm:py-28 border-t border-cream/10',
               i % 2 === 1 && 'bg-espresso-dark/40'
             )}
           >
-            <div className="mx-auto max-w-7xl">
-              <ProductShowcase
-                products={items}
-                sectionIndex={i + 1}
-                title={section.label}
-                sectionId={section.id}
-                description={section.description}
-              />
+            <div className="max-w-7xl mx-auto">
+              {/* Section header */}
+              <header className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <Reveal className="eyebrow">
+                    {String(i + 1).padStart(2, '0')} · {site.name}
+                  </Reveal>
+                  <Reveal delay={0.1}>
+                    <h2
+                      id={`${section.id}-title`}
+                      className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light leading-tight mt-3"
+                    >
+                      {section.label}
+                    </h2>
+                  </Reveal>
+                  <Reveal delay={0.2}>
+                    <p className="text-cream/60 max-w-xl mt-4 leading-relaxed">
+                      {section.description}
+                    </p>
+                  </Reveal>
+                </div>
+                <Reveal delay={0.25} className="shrink-0">
+                  <span className="px-4 py-2 rounded-full bg-cream/5 border border-cream/10 text-[0.65rem] uppercase tracking-[0.2em] text-cream/50">
+                    {items.length} {items.length === 1 ? 'item' : 'items'}
+                  </span>
+                </Reveal>
+              </header>
+
+              {/* Product videos */}
+              <ProductGrid products={items} />
             </div>
           </section>
         )
       })}
 
       {/* CTA Section */}
-      <section className="border-t border-cream/10 bg-espresso-dark px-6 py-20">
-        <div className="mx-auto max-w-3xl text-center">
+      <section className="px-6 py-20 bg-espresso-dark border-t border-cream/10">
+        <div className="max-w-3xl mx-auto text-center">
           <Reveal className="eyebrow">Need Something Special?</Reveal>
           <Reveal delay={0.1} className="display mt-3 text-3xl sm:text-4xl font-light leading-tight mb-6">
             Custom cakes, catering orders & corporate gifts
           </Reveal>
-          <Reveal delay={0.2} className="mb-8 max-w-xl mx-auto text-cream/60">
+          <Reveal delay={0.2} className="text-cream/60 mb-8 max-w-xl mx-auto">
             Planning an event? We create bespoke apple boxes, branded gift sets,
             lemonade carts, and wholesale orders for cafés. Minimum 48 hours notice.
           </Reveal>
@@ -154,8 +176,8 @@ export default function ProductsPage() {
       </section>
 
       {/* Trust badges */}
-      <section className="border-t border-cream/10 px-6 py-12">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 text-center md:grid-cols-4">
+      <section className="px-6 py-12 border-t border-cream/10">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             { icon: Truck, label: 'Free Shipping', desc: 'On orders over $100' },
             { icon: Shield, label: 'Secure Checkout', desc: 'Stripe encrypted payments' },
@@ -163,8 +185,8 @@ export default function ProductsPage() {
             { icon: Tag, label: 'Gift Ready', desc: 'Beautiful packaging included' },
           ].map((item, i) => (
             <Reveal key={item.label} delay={i * 0.1} className="flex flex-col items-center gap-2">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-cream/5 text-gold">
-                <item.icon className="h-7 w-7" strokeWidth={1.5} />
+              <div className="w-14 h-14 rounded-2xl bg-cream/5 flex items-center justify-center text-gold">
+                <item.icon className="w-7 h-7" strokeWidth={1.5} />
               </div>
               <p className="font-medium text-cream">{item.label}</p>
               <p className="text-sm text-cream/50">{item.desc}</p>
