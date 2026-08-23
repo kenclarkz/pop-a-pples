@@ -2,34 +2,44 @@
 
 Every item on the menu page (`/products`) is shown as a looping video.
 
-## Folder
+## Folders
+
+Videos are organised in **one sub-folder per menu category** (the sub-sections
+on the menu page), so clips are easy to find:
 
 ```
 public/assets/products/videos/
+├── gourmet-apples/    # Gourmet Apples videos
+├── lemonade/          # Lemonade videos
+└── italian-ice/       # Italian Ice videos
 ```
 
 ## Naming
 
-One `<product-id>.mp4` per product — the file name must match the product
-`id` in `data/products.ts` exactly:
+One `<product-id>.mp4` per product inside its category folder — the file name
+must match the product `id` in `data/products.ts` exactly:
 
-| Product                  | File                                  |
-| ------------------------ | ------------------------------------- |
-| classic-caramel-apple    | `classic-caramel-apple.mp4`           |
-| candy-apple              | `candy-apple.mp4`                     |
-| dark-chocolate-apple     | `dark-chocolate-apple.mp4`            |
-| toffee-crunch-apple      | `toffee-crunch-apple.mp4`             |
-| confetti-apple           | `confetti-apple.mp4`                  |
-| pumpkin-spice-apple      | `pumpkin-spice-apple.mp4`             |
-| candy-cane-apple         | `candy-cane-apple.mp4`                |
-| party-apple-box          | `party-apple-box.mp4`                 |
-| apple-gift-box           | `apple-gift-box.mp4`                  |
-| classic-lemonade         | `classic-lemonade.mp4`                |
-| strawberry-lemonade      | `strawberry-lemonade.mp4`             |
-| lavender-lemonade        | `lavender-lemonade.mp4`               |
-| lemon-italian-ice        | `lemon-italian-ice.mp4`               |
-| cherry-italian-ice       | `cherry-italian-ice.mp4`              |
-| mango-chile-italian-ice  | `mango-chile-italian-ice.mp4`         |
+| Product                  | Category       | File                                              |
+| ------------------------ | -------------- | ------------------------------------------------- |
+| classic-caramel-apple    | gourmet-apples | `gourmet-apples/classic-caramel-apple.mp4`        |
+| candy-apple              | gourmet-apples | `gourmet-apples/candy-apple.mp4`                  |
+| dark-chocolate-apple     | gourmet-apples | `gourmet-apples/dark-chocolate-apple.mp4`         |
+| toffee-crunch-apple      | gourmet-apples | `gourmet-apples/toffee-crunch-apple.mp4`          |
+| confetti-apple           | gourmet-apples | `gourmet-apples/confetti-apple.mp4`               |
+| pumpkin-spice-apple      | gourmet-apples | `gourmet-apples/pumpkin-spice-apple.mp4`          |
+| candy-cane-apple         | gourmet-apples | `gourmet-apples/candy-cane-apple.mp4`             |
+| party-apple-box          | gourmet-apples | `gourmet-apples/party-apple-box.mp4`              |
+| apple-gift-box           | gourmet-apples | `gourmet-apples/apple-gift-box.mp4`               |
+| classic-lemonade         | lemonade       | `lemonade/classic-lemonade.mp4`                   |
+| strawberry-lemonade      | lemonade       | `lemonade/strawberry-lemonade.mp4`                |
+| lavender-lemonade        | lemonade       | `lemonade/lavender-lemonade.mp4`                  |
+| lemon-italian-ice        | italian-ice    | `italian-ice/lemon-italian-ice.mp4`               |
+| cherry-italian-ice       | italian-ice    | `italian-ice/cherry-italian-ice.mp4`              |
+| mango-chile-italian-ice  | italian-ice    | `italian-ice/mango-chile-italian-ice.mp4`         |
+
+The folder names must match the category ids in `data/products.ts`
+(`MENU_SECTIONS`). Adding a new menu section automatically expects a matching
+sub-folder here.
 
 ## Video specs (recommended)
 

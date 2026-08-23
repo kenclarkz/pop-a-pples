@@ -7,7 +7,7 @@
  * To add a new product, append one object to `products` below.
  * Drop a matching poster image into `/public/assets/products/<id>.png`
  * (or run `node tools/generate-placeholders.mjs`) and a looping product
- * video into `/public/assets/products/videos/<id>.mp4`.
+ * video into `/public/assets/products/videos/<category>/<id>.mp4`.
  *
  * Optional future-proof fields you can add per product:
  *   - discount, compareAt   -> sale pricing
@@ -39,7 +39,7 @@ export interface Product {
   sizePrice?: Partial<Record<string, number>>
   /** Poster frame shown before/until the product video loads */
   image: string
-  /** Looping product video — defaults to /assets/products/videos/<id>.mp4 */
+  /** Looping product video — defaults to /assets/products/videos/<category>/<id>.mp4 */
   video?: string
   ingredients: string[]
   featured?: boolean
@@ -50,7 +50,7 @@ export interface Product {
   allergens?: string[]
 }
 
-/** Where product videos live inside /public */
+/** Where product videos live inside /public (one sub-folder per menu category) */
 export const PRODUCT_VIDEO_DIR = '/assets/products/videos'
 
 /**
@@ -309,9 +309,12 @@ export const products: Product[] = [
 ]
 
 // Every product gets a video slot by convention: drop an mp4 named after
-// the product id into public/assets/products/videos/ and it just plays.
+// the product id into the category's sub-folder of
+// public/assets/products/videos/ and it just plays.
 for (const product of products) {
-  product.video = product.video ?? asset(`${PRODUCT_VIDEO_DIR}/${product.id}.mp4`)
+  product.video =
+    product.video ??
+    asset(`${PRODUCT_VIDEO_DIR}/${product.category}/${product.id}.mp4`)
 }
 
 export const getProduct = (id: string) => products.find((p) => p.id === id)
