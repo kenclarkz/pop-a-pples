@@ -111,9 +111,9 @@ node tools/generate-placeholders.mjs
 │   ├── FinalProduct.tsx         # Scene 6 (3D reveal)
 │   ├── Flan3D.tsx               # WebGL reveal canvas (procedural apple fallback)
 │   ├── JourneyFireCanvas.tsx    # WebGL fire-burn photo backdrop
-│   ├── ProductShowcase.tsx      # Cinematic menu centerpiece (3D tilt + parallax)
-│   ├── ProductExpandedView.tsx  # Full-screen expanded product view
+│   ├── ProductCard.tsx          # Ecommerce card + quick view
 │   ├── ProductVideo.tsx         # In-view looping product video (+ poster fallback)
+│   ├── ProductGrid.tsx          # Grid of ProductCards
 │   ├── PriceDisplay.tsx         # Formatted pricing
 │   ├── Navigation.tsx           # Header nav + cart button
 │   ├── Footer.tsx               # Footer + newsletter
