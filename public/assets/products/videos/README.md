@@ -19,6 +19,10 @@ public/assets/products/videos/
 One `<product-id>.mp4` per product inside its category folder — the file name
 must match the product `id` in `data/products.ts` exactly:
 
+> **Tip:** lowercase `.mp4` is preferred, but the site also picks up common
+> variations automatically — uppercase extensions like `.MP4` and other
+> formats like `.webm` / `.mov` play without renaming.
+
 | Product                  | Category       | File                                              |
 | ------------------------ | -------------- | ------------------------------------------------- |
 | classic-caramel-apple    | gourmet-apples | `gourmet-apples/classic-caramel-apple.mp4`        |
