@@ -20,9 +20,12 @@ public/assets/
 │   ├── pumpkin-spice-apple.svg
 │   ├── party-apple-box.svg
 │   ├── apple-gift-box.svg
-│   ├── classic-lemonade.svg
+│   ├── mango-lemonade.svg
 │   ├── strawberry-lemonade.svg
-│   ├── lavender-lemonade.svg
+│   ├── blueberry-lemonade.svg
+│   ├── strawberry-mango-lemonade.svg
+│   ├── mango-blueberry-lemonade.svg
+│   ├── strawberry-blueberry-lemonade.svg
 │   ├── lemon-italian-ice.svg
 │   ├── cherry-italian-ice.svg
 │   ├── mango-chile-italian-ice.svg

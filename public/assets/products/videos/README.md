@@ -34,9 +34,12 @@ must match the product `id` in `data/products.ts` exactly:
 | candy-cane-apple         | gourmet-apples | `gourmet-apples/candy-cane-apple.mp4`             |
 | party-apple-box          | gourmet-apples | `gourmet-apples/party-apple-box.mp4`              |
 | apple-gift-box           | gourmet-apples | `gourmet-apples/apple-gift-box.mp4`               |
-| classic-lemonade         | lemonade       | `lemonade/classic-lemonade.mp4`                   |
+| mango-lemonade           | lemonade       | `lemonade/mango-lemonade.mp4`                     |
 | strawberry-lemonade      | lemonade       | `lemonade/strawberry-lemonade.mp4`                |
-| lavender-lemonade        | lemonade       | `lemonade/lavender-lemonade.mp4`                  |
+| blueberry-lemonade       | lemonade       | `lemonade/blueberry-lemonade.mp4`                 |
+| strawberry-mango-lemonade    | lemonade   | `lemonade/strawberry-mango-lemonade.mp4`          |
+| mango-blueberry-lemonade     | lemonade   | `lemonade/mango-blueberry-lemonade.mp4`           |
+| strawberry-blueberry-lemonade | lemonade  | `lemonade/strawberry-blueberry-lemonade.mp4`      |
 | lemon-italian-ice        | italian-ice    | `italian-ice/lemon-italian-ice.mp4`               |
 | cherry-italian-ice       | italian-ice    | `italian-ice/cherry-italian-ice.mp4`              |
 | mango-chile-italian-ice  | italian-ice    | `italian-ice/mango-chile-italian-ice.mp4`         |

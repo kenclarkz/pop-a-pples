@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="80%">
+      <stop offset="0%" stop-color="#241509"/>
+      <stop offset="100%" stop-color="#120C08"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#C8402E" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C8402E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <rect width="600" height="600" fill="url(#halo)"/>
+
+        <path d="M216 168.00000000000003 L384 168.00000000000003 L360 468 L240 468 Z" fill="#F6EFE3" opacity="0.25"/>
+        <path d="M222 204.00000000000003 L378 204.00000000000003 L360 462 L240 462 Z" fill="#C4549B"/>
+        <path d="M222 264 Q300 240 378 276 L372 336.00000000000006 Q300 312 228 330 Z" fill="#F6EFE3" opacity="0.32"/>
+        <g fill="#A62E20">
+          <ellipse cx="186" cy="396" rx="24" ry="30"/>
+        </g>
+        <g fill="#443A70">
+          <circle cx="408.00000000000006" cy="426" r="19.8"/>
+          <circle cx="432" cy="378" r="16.8"/>
+          <circle cx="240" cy="432" r="15.6"/>
+        </g>
+  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A96A" opacity="0.75">Strawberry Blueberry Lemonade</text>
+</svg>
