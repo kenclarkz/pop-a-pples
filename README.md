@@ -181,7 +181,8 @@ public/assets/video/POP-poster.jpg     # poster frame
 
 Drop your exported `POP.mp4` (and a mobile-friendly `POP-h264.mp4`) into that
 folder with these exact names and the homepage scrub video updates
-automatically — no code changes needed.
+automatically — no code changes needed. Extension casing doesn't matter:
+`POP.MP4`, `POP.Mp4`, etc. are picked up too.
 
 No video? The hero falls back to `public/assets/journey/hero.png` with a slow
 zoom — the template never looks broken.

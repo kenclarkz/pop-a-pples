@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { buildVideoCandidates } from '@/lib/videos'
 
 interface ProductVideoProps {
   /** Video source URL (already base-path prefixed) */
@@ -13,32 +14,17 @@ interface ProductVideoProps {
 }
 
 /**
- * Extension variants tried in order when the default `.mp4` source fails,
- * so uploads like `Cherry.MP4`, `.webm` or `.mov` play without renaming.
- */
-const FALLBACK_EXTENSIONS = ['.MP4', '.webm', '.mov'] as const
-
-/**
  * Looping product video that plays while scrolled into view and pauses
  * off-screen. If the video file is missing or fails to decode, the poster
  * image is rendered instead so cards never look broken. When the default
- * source 404s (e.g. the upload used an uppercase extension), common
- * variants are tried before falling back to the poster.
+ * source 404s (e.g. the upload used `Cherry.MP4`, `Cherry.Mp4`, `.webm`
+ * or `.mov`), those variants are tried before falling back to the poster.
  */
 export function ProductVideo({ src, poster, alt, className }: ProductVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [candidateIndex, setCandidateIndex] = useState(0)
 
-  const candidates = useMemo(() => {
-    if (!src) return []
-    const base = src.replace(/\.[^./]+$/, '')
-    const list: string[] = [src]
-    for (const ext of FALLBACK_EXTENSIONS) {
-      const url = `${base}${ext}`
-      if (!list.includes(url)) list.push(url)
-    }
-    return list
-  }, [src])
+  const candidates = useMemo(() => buildVideoCandidates(src ?? ''), [src])
 
   useEffect(() => {
     setCandidateIndex(0)

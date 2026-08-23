@@ -4,13 +4,16 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { asset } from '@/lib/paths'
 import { cn } from '@/lib/utils'
+import { buildVideoCandidates } from '@/lib/videos'
 import { useIsMobile } from '@/lib/assets'
 import { site } from '@/data/site'
 
 const SCRUB_VH = 300
 
-const HEVC_SRC = asset('/assets/video/POP.mp4')
-const H264_SRC = asset('/assets/video/POP-h264.mp4')
+// Canonical (lowercase) paths — uploads using any extension casing are
+// detected below by probing each case variant before committing to a source.
+const HEVC_BASE = asset('/assets/video/POP.mp4')
+const H264_BASE = asset('/assets/video/POP-h264.mp4')
 const POSTER_SRC = asset('/assets/video/POP-poster.jpg')
 const HERO_PHOTO = asset('/assets/journey/hero.png')
 
@@ -27,6 +30,10 @@ const HERO_PHOTO = asset('/assets/journey/hero.png')
  * seeks are less frequent to keep the scrub smooth on weaker GPUs, and the
  * video is scaled up with `object-contain` to avoid letterbox bars in portrait.
  *
+ * Uploads: each canonical path is probed across common extension casings
+ * (`POP.MP4`, `POP.Mp4`, …), so dropping a hero video in with any letter
+ * casing works without renaming.
+ *
  * Fallback: if no video files exist (fresh template), the hero photo from
  * `public/assets/journey/hero.png` is shown with a slow Ken Burns zoom so the
  * page still feels alive until a video is dropped in.
@@ -36,29 +43,47 @@ export default function ScrollVideo() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [ready, setReady] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [hasVideo, setHasVideo] = useState<boolean | null>(null)
+  const [heroSrcs, setHeroSrcs] = useState<{
+    hevc: string | null
+    h264: string | null
+  } | null>(null)
   const isMobile = useIsMobile()
 
-  // Detect whether a hero video exists in /public.
+  // Detect which hero video files exist in /public, regardless of the
+  // letter casing used for the extension in the uploaded filename.
   useEffect(() => {
     let cancelled = false
-    Promise.all([
-      fetch(HEVC_SRC, { method: 'HEAD' }),
-      fetch(H264_SRC, { method: 'HEAD' }),
-    ])
-      .then(([hevc, h264]) => {
-        if (!cancelled) setHasVideo(hevc.ok || h264.ok)
-      })
-      .catch(() => {
-        if (!cancelled) setHasVideo(false)
-      })
+
+    const probeSlot = async (base: string): Promise<string | null> => {
+      for (const candidate of buildVideoCandidates(base)) {
+        try {
+          const res = await fetch(candidate, { method: 'HEAD' })
+          if (res.ok) return candidate
+        } catch {
+          /* network hiccup — try the next variant */
+        }
+      }
+      return null
+    }
+
+    Promise.all([probeSlot(HEVC_BASE), probeSlot(H264_BASE)]).then(
+      ([hevc, h264]) => {
+        if (!cancelled) setHeroSrcs({ hevc, h264 })
+      }
+    )
+
     return () => {
       cancelled = true
     }
   }, [])
 
+  const hevcSrc = heroSrcs?.hevc ?? null
+  const h264Src = heroSrcs?.h264 ?? null
+  const isPhoto = heroSrcs !== null && !hevcSrc && !h264Src
+
   useEffect(() => {
     const video = videoRef.current
+    // No <video> mounted while probing or in photo-fallback mode.
     if (!video || typeof window === 'undefined') return
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
@@ -121,10 +146,10 @@ export default function ScrollVideo() {
       video.removeEventListener('loadeddata', markReady)
       video.removeEventListener('canplay', markReady)
     }
-  }, [isMobile])
+    // Re-run when the resolved sources mount the <video> element.
+  }, [isMobile, hevcSrc, h264Src])
 
-  const showLoader = hasVideo !== false && !ready
-  const isPhoto = hasVideo === false
+  const showLoader = !isPhoto && !ready
 
   return (
     <>
@@ -142,8 +167,11 @@ export default function ScrollVideo() {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-espresso/60 via-espresso/20 to-espresso" />
           </div>
-        ) : (
+        ) : hevcSrc || h264Src ? (
           <video
+            /* Keyed by the resolved URLs so a late detection remounts the
+               element and triggers a fresh load. */
+            key={`${hevcSrc ?? ''}|${h264Src ?? ''}`}
             ref={videoRef}
             className="h-full w-full object-contain md:object-cover scale-[1.15] md:scale-90"
             playsInline
@@ -154,14 +182,14 @@ export default function ScrollVideo() {
             poster={POSTER_SRC}
           >
             {/* H.264 first on mobile for the widest device support; HEVC on
-                desktop for Safari efficiency. Both files can point to the same
-                upload, so the browser tries each in turn and plays whichever
-                codec it can decode. */}
-            {isMobile && <source src={H264_SRC} type="video/mp4" />}
-            <source src={HEVC_SRC} type="video/mp4" />
-            {!isMobile && <source src={H264_SRC} type="video/mp4" />}
+                desktop for Safari efficiency. Both slots can resolve to the
+                same upload (in any extension casing), so the browser tries
+                each in turn and plays whichever codec it can decode. */}
+            {isMobile && h264Src && <source src={h264Src} type="video/mp4" />}
+            {hevcSrc && <source src={hevcSrc} type="video/mp4" />}
+            {!isMobile && h264Src && <source src={h264Src} type="video/mp4" />}
           </video>
-        )}
+        ) : null}
 
         {/* Brand loader until the first frame is decodable */}
         {showLoader && (
