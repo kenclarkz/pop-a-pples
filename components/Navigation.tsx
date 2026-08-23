@@ -30,7 +30,7 @@ export function Navigation() {
   }, [pathname])
 
   const navLinks = [
-    { label: 'The Experience', href: '/' },
+    { label: 'Home', href: '/' },
     { label: 'The Menu', href: '/products' },
     { label: 'Our Story', href: '/about' },
     { label: 'Contact', href: '/contact' },

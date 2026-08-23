@@ -15,7 +15,7 @@ export const site = {
     { label: 'TikTok', href: 'https://tiktok.com' },
   ],
   nav: [
-    { label: 'The Experience', href: '/' },
+    { label: 'Home', href: '/' },
     { label: 'The Menu', href: '/products' },
     { label: 'Our Story', href: '/about' },
     { label: 'Contact', href: '/contact' },
