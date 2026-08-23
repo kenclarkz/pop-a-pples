@@ -40,7 +40,8 @@ export interface Product {
   /** Poster frame shown before/until the product video loads */
   image: string
   /** Looping product video — defaults to /assets/products/videos/<category>/<id>.mp4
-   *  (.MP4/.webm/.mov variants are detected automatically at runtime) */
+   *  (uploads with any extension casing — .MP4, .Mp4, … — plus .webm/.mov are
+   *  detected automatically at runtime) */
   video?: string
   ingredients: string[]
   featured?: boolean
