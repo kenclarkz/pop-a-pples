@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 interface ProductVideoProps {
@@ -13,17 +13,43 @@ interface ProductVideoProps {
 }
 
 /**
+ * Extension variants tried in order when the default `.mp4` source fails,
+ * so uploads like `Cherry.MP4`, `.webm` or `.mov` play without renaming.
+ */
+const FALLBACK_EXTENSIONS = ['.MP4', '.webm', '.mov'] as const
+
+/**
  * Looping product video that plays while scrolled into view and pauses
  * off-screen. If the video file is missing or fails to decode, the poster
- * image is rendered instead so cards never look broken.
+ * image is rendered instead so cards never look broken. When the default
+ * source 404s (e.g. the upload used an uppercase extension), common
+ * variants are tried before falling back to the poster.
  */
 export function ProductVideo({ src, poster, alt, className }: ProductVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [failed, setFailed] = useState(false)
+  const [candidateIndex, setCandidateIndex] = useState(0)
+
+  const candidates = useMemo(() => {
+    if (!src) return []
+    const base = src.replace(/\.[^./]+$/, '')
+    const list: string[] = [src]
+    for (const ext of FALLBACK_EXTENSIONS) {
+      const url = `${base}${ext}`
+      if (!list.includes(url)) list.push(url)
+    }
+    return list
+  }, [src])
+
+  useEffect(() => {
+    setCandidateIndex(0)
+  }, [candidates])
+
+  const exhausted = candidateIndex >= candidates.length
+  const currentSrc = exhausted ? undefined : candidates[candidateIndex]
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video || failed || !src) return
+    if (!video || !currentSrc) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -37,9 +63,9 @@ export function ProductVideo({ src, poster, alt, className }: ProductVideoProps)
     )
     observer.observe(video)
     return () => observer.disconnect()
-  }, [failed, src])
+  }, [currentSrc])
 
-  if (!src || failed) {
+  if (!src || !currentSrc) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img src={poster} alt={alt} className={cn('h-full w-full object-cover', className)} loading="lazy" />
@@ -48,9 +74,10 @@ export function ProductVideo({ src, poster, alt, className }: ProductVideoProps)
 
   return (
     <video
+      key={currentSrc}
       ref={videoRef}
       className={cn('h-full w-full object-cover', className)}
-      src={src}
+      src={currentSrc}
       poster={poster}
       aria-label={alt}
       muted
@@ -59,7 +86,7 @@ export function ProductVideo({ src, poster, alt, className }: ProductVideoProps)
       disablePictureInPicture
       disableRemotePlayback
       preload="metadata"
-      onError={() => setFailed(true)}
+      onError={() => setCandidateIndex((i) => i + 1)}
     />
   )
 }
