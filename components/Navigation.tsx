@@ -57,7 +57,7 @@ export function Navigation() {
               alt={`${site.name} logo`}
               width={160}
               height={288}
-              className="h-24 lg:h-36 w-auto object-contain"
+              className="h-48 lg:h-72 w-auto object-contain"
               priority
             />
           </Link>
