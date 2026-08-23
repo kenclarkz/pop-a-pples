@@ -117,39 +117,6 @@ export const products: Product[] = [
     rating: 4.9,
     allergens: ['Milk', 'Soy'],
   },
-  {
-    id: 'party-apple-box',
-    name: 'The Orchard Party Box',
-    tagline: 'The centrepiece apple spread.',
-    description:
-      'A grand wooden crate of hand-coated apples in rotating flavours — caramel, chocolate and candy — built to feed a crowd and steal the table.',
-    price: 48,
-    category: 'gourmet-apples',
-    sizes: ['Serves 8', 'Serves 16'],
-    sizePrice: { 'Serves 8': 48, 'Serves 16': 88 },
-    image: asset('/assets/products/party-apple-box.svg'),
-    ingredients: ['Mixed Apples', 'Caramel', 'Chocolate', 'Candy Shell'],
-    featured: true,
-    badge: 'Celebration',
-    rating: 5.0,
-    allergens: ['Milk', 'Soy'],
-  },
-  {
-    id: 'apple-gift-box',
-    name: 'The Apple Gift Box',
-    tagline: 'Six perfect little moments.',
-    description:
-      'A curated box of miniature coated apples in rotating flavours, ribboned and ready to gift. Perfect for corporate and celebration orders.',
-    price: 28,
-    category: 'gourmet-apples',
-    sizes: ['6 pieces', '12 pieces'],
-    sizePrice: { '6 pieces': 28, '12 pieces': 52 },
-    image: asset('/assets/products/apple-gift-box.svg'),
-    ingredients: ['Mini Apples', 'Seasonal Coatings', 'Caramel'],
-    rating: 4.8,
-    allergens: ['Milk', 'Tree Nuts (varies)'],
-  },
-
   /* --- Lemonade ------------------------------------------------------- */
   {
     id: 'mango-lemonade',

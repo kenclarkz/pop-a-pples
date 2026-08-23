@@ -18,8 +18,6 @@ public/assets/
 │   ├── dark-chocolate-apple.svg
 │   ├── toffee-crunch-apple.svg
 │   ├── pumpkin-spice-apple.svg
-│   ├── party-apple-box.svg
-│   ├── apple-gift-box.svg
 │   ├── mango-lemonade.svg
 │   ├── strawberry-lemonade.svg
 │   ├── lavender-lemonade.svg
