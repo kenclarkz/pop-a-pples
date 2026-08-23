@@ -46,7 +46,7 @@ export default function ProductsPage() {
       {/* Sub-section navigation — sticks under the main nav while scrolling */}
       <nav
         aria-label="Menu sub-sections"
-        className="sticky top-16 sm:top-20 z-40 px-6 py-4 border-y border-cream/10 bg-espresso/80 backdrop-blur"
+        className="sticky top-14 lg:top-16 z-40 px-6 py-4 border-y border-cream/10 bg-espresso/80 backdrop-blur"
       >
         <div className="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto no-scrollbar">
           {MENU_SECTIONS.map((section) => (

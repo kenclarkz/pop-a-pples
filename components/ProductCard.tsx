@@ -37,7 +37,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
     <article
       data-product-card
       className={cn(
-        'group relative overflow-hidden rounded-3xl bg-cream/[0.03] border border-cream/10 transition-all duration-700 hover:border-gold/30',
+        'group relative overflow-hidden rounded-3xl bg-cream/[0.03] border border-cream/10 transition-colors duration-700 hover:border-gold/30',
         className
       )}
     >
