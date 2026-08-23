@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="80%">
+      <stop offset="0%" stop-color="#241509"/>
+      <stop offset="100%" stop-color="#120C08"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#C8402E" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C8402E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <rect width="600" height="600" fill="url(#halo)"/>
+
+        
+    <g transform="translate(300 264) scale(1.95)">
+      <path d="M100 155 C 60 155 30 120 30 82 C 30 40 70 22 100 55 C 130 22 170 40 170 82 C 170 120 140 155 100 155 Z" fill="#C8894B" transform="translate(-100 -100)"/>
+      <path d="M100 155 C 60 155 30 120 30 82 C 30 40 70 22 100 55 C 130 22 170 40 170 82 C 170 120 140 155 100 155 Z" fill="#D9A36A" transform="translate(-88 -106) scale(0.9)"/>
+      <rect x="-4" y="-150" width="9" height="40" rx="4.5" fill="#6B4226" transform="rotate(12)"/>
+      <path d="M0 -130 Q -45 -185 -90 -170 Q -45 -150 0 -130 Z" fill="#4E9C4E"/>
+    </g>
+        <path d="M210 240 Q260 288 310 240" stroke="#3A2215" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.85"/>
+        <path d="M320 288 Q370 336.00000000000006 420 276" stroke="#3A2215" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.7"/>
+        <rect x="379.5" y="263" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(0 382.5 264)"/>
+<rect x="401.6330272964839" y="301.08330745708315" width="6" height="2" rx="1" fill="#C8402E" transform="rotate(47 404.6330272964839 302.08330745708315)"/>
+<rect x="400.1567726107222" y="349.55880985109553" width="6" height="2" rx="1" fill="#4E9C4E" transform="rotate(94 403.1567726107222 350.55880985109553)"/>
+<rect x="370.98378111602165" y="391.14366782900436" width="6" height="2" rx="1" fill="#F2C063" transform="rotate(141 373.98378111602165 392.14366782900436)"/>
+<rect x="322.8237753987215" y="409.4539079326604" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(8 325.8237753987215 410.4539079326604)"/>
+<rect x="273.2526655312053" y="397.67782623725645" width="6" height="2" rx="1" fill="#C8402E" transform="rotate(55 276.2526655312053 398.67782623725645)"/>
+<rect x="239.80575795905168" y="362.06333311531444" width="6" height="2" rx="1" fill="#4E9C4E" transform="rotate(102 242.80575795905168 363.06333311531444)"/>
+<rect x="231.1940771060808" y="318.2177256295681" width="6" height="2" rx="1" fill="#F2C063" transform="rotate(149 234.1940771060808 319.2177256295681)"/>
+<rect x="195.29292531182017" y="300.01834780078696" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(16 198.29292531182017 301.01834780078696)"/>
+<rect x="164.5649455072422" y="263" width="6" height="2" rx="1" fill="#C8402E" transform="rotate(63 167.5649455072422 264)"/>
+<rect x="158.81314910838114" y="212.70409950846872" width="6" height="2" rx="1" fill="#4E9C4E" transform="rotate(110 161.81314910838114 213.70409950846872)"/>
+<rect x="182.63693543028717" y="167.03799469925053" width="6" height="2" rx="1" fill="#F2C063" transform="rotate(157 185.63693543028717 168.03799469925053)"/>
+<rect x="227.64436737086226" y="142.8725204952517" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(24 230.64436737086226 143.8725204952517)"/>
+<rect x="276.62278576670474" y="147.43507538425735" width="6" height="2" rx="1" fill="#C8402E" transform="rotate(71 279.62278576670474 148.43507538425735)"/>
+<rect x="312.50650513132575" y="175.0582393629033" width="6" height="2" rx="1" fill="#4E9C4E" transform="rotate(118 315.50650513132575 176.0582393629033)"/>
+<rect x="349.52760221863423" y="172.0195241575579" width="6" height="2" rx="1" fill="#F2C063" transform="rotate(165 352.52760221863423 173.0195241575579)"/>
+<rect x="396.648185733664" y="179.3852441033974" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(32 399.648185733664 180.3852441033974)"/>
+<rect x="434.17534680252584" y="213.072256888737" width="6" height="2" rx="1" fill="#C8402E" transform="rotate(79 437.17534680252584 214.072256888737)"/>
+        <path d="M420 132 l8 20 20 8 -20 8 -8 20 -8 -20 -20 -8 20 -8 Z" fill="#C9A96A"/>
+  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A96A" opacity="0.75">MVP</text>
+</svg>
