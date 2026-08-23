@@ -112,8 +112,8 @@ node tools/generate-placeholders.mjs
 │   ├── Flan3D.tsx               # WebGL reveal canvas (procedural apple fallback)
 │   ├── JourneyFireCanvas.tsx    # WebGL fire-burn photo backdrop
 │   ├── ProductCard.tsx          # Ecommerce card + quick view
-│   ├── ProductGrid.tsx          # Filtered grid
-│   ├── CategoryFilter.tsx       # Category pills
+│   ├── ProductVideo.tsx         # In-view looping product video (+ poster fallback)
+│   ├── ProductGrid.tsx          # Grid of ProductCards
 │   ├── PriceDisplay.tsx         # Formatted pricing
 │   ├── Navigation.tsx           # Header nav + cart button
 │   ├── Footer.tsx               # Footer + newsletter
@@ -133,7 +133,8 @@ node tools/generate-placeholders.mjs
 │   └── utils.ts                 # clsx helper
 ├── public/assets/
 │   ├── brand/logo.png             # Business logo (nav, footer, favicon)
-│   ├── products/*.svg           # Product card images
+│   ├── products/*.svg           # Product poster images
+│   ├── products/videos/         # Menu videos — one <product-id>.mp4 per product
 │   ├── journey/                 # Drop chapter photos here (hero, orchard, dip, toppings, set, reveal)
 │   ├── apple/                   # Drop apple.glb here
 │   └── video/                   # Drop POP.mp4 + POP-h264.mp4 here

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="80%">
+      <stop offset="0%" stop-color="#241509"/>
+      <stop offset="100%" stop-color="#120C08"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#C8402E" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C8402E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <rect width="600" height="600" fill="url(#halo)"/>
+
+        <path d="M198 252 L402 252 L372 480 L228 480 Z" fill="#FBF7EE"/>
+        <rect x="186" y="234" width="228" height="30" rx="12" fill="#C8894B"/>
+        <circle cx="300" cy="240" r="102.00000000000001" fill="#F0A03C"/>
+        <rect x="346.5" y="227" width="6" height="2" rx="1" fill="#A62E20" transform="rotate(0 349.5 228)"/>
+<rect x="354.85819173795807" y="260.40444257473507" width="6" height="2" rx="1" fill="#C8894B" transform="rotate(47 357.85819173795807 261.40444257473507)"/>
+<rect x="337.39848087300874" y="296.9722214206506" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(94 340.39848087300874 297.9722214206506)"/>
+<rect x="297" y="315.780537339226" width="6" height="2" rx="1" fill="#A62E20" transform="rotate(141 300 316.780537339226)"/>
+<rect x="252.38604134115357" y="304.27364312389955" width="6" height="2" rx="1" fill="#C8894B" transform="rotate(8 255.38604134115357 305.27364312389955)"/>
+<rect x="225.9397843439898" y="268.0266346376703" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(55 228.9397843439898 269.0266346376703)"/>
+<rect x="228.36690955086198" y="227" width="6" height="2" rx="1" fill="#A62E20" transform="rotate(102 231.36690955086198 228)"/>
+<rect x="252.36321570567463" y="201.228940571912" width="6" height="2" rx="1" fill="#C8894B" transform="rotate(149 255.36321570567463 202.228940571912)"/>
+<rect x="264.5296775439874" y="170.75975176804164" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(16 267.5296775439874 171.75975176804164)"/>
+<rect x="297" y="147.5389673043453" width="6" height="2" rx="1" fill="#A62E20" transform="rotate(63 300 148.5389673043453)"/>
+<rect x="341.1166125501912" y="150.58778560523808" width="6" height="2" rx="1" fill="#C8894B" transform="rotate(110 344.1166125501912 151.58778560523808)"/>
+<rect x="374.573555995337" y="182.2128865640956" width="6" height="2" rx="1" fill="#F6EFE3" transform="rotate(157 377.573555995337 183.2128865640956)"/>
+        <circle cx="270" cy="198" r="27" fill="#F7BE72" opacity="0.9"/>
+  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A96A" opacity="0.75">Mango Chile Italian Ice</text>
+</svg>

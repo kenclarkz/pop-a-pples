@@ -1,9 +1,13 @@
 /**
  * Product catalog for Pop-a-pples.
  *
+ * The menu is split into three sub-sections (see MENU_SECTIONS):
+ * Gourmet Apples, Lemonade and Italian Ice.
+ *
  * To add a new product, append one object to `products` below.
- * Drop a matching image into `/public/assets/products/<id>.png` (or run
- * `node tools/generate-placeholders.mjs` to create a placeholder SVG).
+ * Drop a matching poster image into `/public/assets/products/<id>.png`
+ * (or run `node tools/generate-placeholders.mjs`) and a looping product
+ * video into `/public/assets/products/videos/<id>.mp4`.
  *
  * Optional future-proof fields you can add per product:
  *   - discount, compareAt   -> sale pricing
@@ -14,13 +18,7 @@
 
 import { asset } from '@/lib/paths'
 
-export type CategoryId =
-  | 'all'
-  | 'classic'
-  | 'specialty'
-  | 'seasonal'
-  | 'party'
-  | 'gift'
+export type CategoryId = 'gourmet-apples' | 'lemonade' | 'italian-ice'
 
 export interface Category {
   id: CategoryId
@@ -36,10 +34,13 @@ export interface Product {
   /** base price in USD (whole dollars) */
   price: number
   compareAt?: number
-  category: Exclude<CategoryId, 'all'>
+  category: CategoryId
   sizes: string[]
   sizePrice?: Partial<Record<string, number>>
+  /** Poster frame shown before/until the product video loads */
   image: string
+  /** Looping product video — defaults to /assets/products/videos/<id>.mp4 */
+  video?: string
   ingredients: string[]
   featured?: boolean
   seasonal?: boolean
@@ -49,32 +50,29 @@ export interface Product {
   allergens?: string[]
 }
 
-export const CATEGORIES: Category[] = [
-  { id: 'all', label: 'All', description: 'Everything we make' },
+/** Where product videos live inside /public */
+export const PRODUCT_VIDEO_DIR = '/assets/products/videos'
+
+/**
+ * The three menu sub-sections. Each renders as its own full-height,
+ * scrollable section on the menu page (`/products#<id>`).
+ */
+export const MENU_SECTIONS: Category[] = [
   {
-    id: 'classic',
-    label: 'Classic Apples',
-    description: 'The originals — shiny, sticky, timeless.',
+    id: 'gourmet-apples',
+    label: 'Gourmet Apples',
+    description:
+      'Hand-picked apples, hand-dipped in caramel, chocolate and candy.',
   },
   {
-    id: 'specialty',
-    label: 'Specialty Apples',
-    description: 'Modern coatings, serious flavour.',
+    id: 'lemonade',
+    label: 'Lemonade',
+    description: 'Fresh-squeezed to order — sunshine by the cup.',
   },
   {
-    id: 'seasonal',
-    label: 'Seasonal Flavours',
-    description: 'Here for a moment. Gone soon.',
-  },
-  {
-    id: 'party',
-    label: 'Party Boxes',
-    description: 'Crowd-pleasers for every celebration.',
-  },
-  {
-    id: 'gift',
-    label: 'Gift Boxes',
-    description: 'Beautifully boxed, ready to share.',
+    id: 'italian-ice',
+    label: 'Italian Ice',
+    description: 'Slow-churned, fruit-forward, served frosty.',
   },
 ]
 
@@ -86,7 +84,7 @@ export const products: Product[] = [
     description:
       'A crisp Honeycrisp apple hand-dipped in slow-cooked, buttery caramel and finished with a whisper of flaky salt.',
     price: 9,
-    category: 'classic',
+    category: 'gourmet-apples',
     sizes: ['Standard', 'Jumbo'],
     sizePrice: { Standard: 9, Jumbo: 12 },
     image: asset('/assets/products/classic-caramel-apple.svg'),
@@ -103,7 +101,7 @@ export const products: Product[] = [
     description:
       'The fairground icon — a tart Granny Smith sealed under a brittle ruby candy shell that shatters with every bite.',
     price: 8,
-    category: 'classic',
+    category: 'gourmet-apples',
     sizes: ['Standard', 'Jumbo'],
     image: asset('/assets/products/candy-apple.svg'),
     ingredients: ['Granny Smith Apple', 'Candy Shell', 'Red Food Colour'],
@@ -117,7 +115,7 @@ export const products: Product[] = [
     description:
       'Hand-coated in 72% single-origin chocolate, dusted with smoked sea salt and a faint ribbon of salted caramel.',
     price: 11,
-    category: 'specialty',
+    category: 'gourmet-apples',
     sizes: ['Standard', 'Jumbo'],
     image: asset('/assets/products/dark-chocolate-apple.svg'),
     ingredients: ['Fuji Apple', '72% Chocolate', 'Smoked Sea Salt', 'Caramel'],
@@ -131,7 +129,7 @@ export const products: Product[] = [
     description:
       'Caramel-dipped, then rolled through a crunchy blend of roasted toffee, almonds and buttery shortbread.',
     price: 12,
-    category: 'specialty',
+    category: 'gourmet-apples',
     sizes: ['Standard', 'Jumbo'],
     image: asset('/assets/products/toffee-crunch-apple.svg'),
     ingredients: ['Fuji Apple', 'Caramel', 'Toffee', 'Roasted Almonds'],
@@ -146,7 +144,7 @@ export const products: Product[] = [
     description:
       'Silky white chocolate swirled over a crisp apple, scattered with a confetti of rainbow sprinkles.',
     price: 10,
-    category: 'specialty',
+    category: 'gourmet-apples',
     sizes: ['Standard', 'Jumbo'],
     image: asset('/assets/products/confetti-apple.svg'),
     ingredients: ['Honeycrisp Apple', 'White Chocolate', 'Sprinkles'],
@@ -160,7 +158,7 @@ export const products: Product[] = [
     description:
       'A warm spiced caramel coating kissed with pumpkin, cinnamon and nutmeg, rolled in ginger cookie crumble.',
     price: 12,
-    category: 'seasonal',
+    category: 'gourmet-apples',
     sizes: ['Standard', 'Jumbo'],
     image: asset('/assets/products/pumpkin-spice-apple.svg'),
     ingredients: ['Fuji Apple', 'Spiced Caramel', 'Ginger Crumble', 'Pumpkin'],
@@ -175,7 +173,7 @@ export const products: Product[] = [
     description:
       'A frosty white chocolate shell flecked with crushed peppermint candy cane over a crisp, tart apple.',
     price: 11,
-    category: 'seasonal',
+    category: 'gourmet-apples',
     sizes: ['Standard', 'Jumbo'],
     image: asset('/assets/products/candy-cane-apple.svg'),
     ingredients: ['Granny Smith Apple', 'White Chocolate', 'Candy Cane'],
@@ -190,7 +188,7 @@ export const products: Product[] = [
     description:
       'A grand wooden crate of hand-coated apples in rotating flavours — caramel, chocolate and candy — built to feed a crowd and steal the table.',
     price: 48,
-    category: 'party',
+    category: 'gourmet-apples',
     sizes: ['Serves 8', 'Serves 16'],
     sizePrice: { 'Serves 8': 48, 'Serves 16': 88 },
     image: asset('/assets/products/party-apple-box.svg'),
@@ -207,7 +205,7 @@ export const products: Product[] = [
     description:
       'A curated box of miniature coated apples in rotating flavours, ribboned and ready to gift. Perfect for corporate and celebration orders.',
     price: 28,
-    category: 'gift',
+    category: 'gourmet-apples',
     sizes: ['6 pieces', '12 pieces'],
     sizePrice: { '6 pieces': 28, '12 pieces': 52 },
     image: asset('/assets/products/apple-gift-box.svg'),
@@ -215,7 +213,106 @@ export const products: Product[] = [
     rating: 4.8,
     allergens: ['Milk', 'Tree Nuts (varies)'],
   },
+
+  /* --- Lemonade ------------------------------------------------------- */
+  {
+    id: 'classic-lemonade',
+    name: 'Classic Squeezed Lemonade',
+    tagline: 'Sunshine in a cup.',
+    description:
+      'Hand-squeezed lemons, pure cane sugar and cold spring water over crushed ice — the orchard-stand original.',
+    price: 6,
+    category: 'lemonade',
+    sizes: ['16 oz', '24 oz'],
+    sizePrice: { '16 oz': 6, '24 oz': 8 },
+    image: asset('/assets/products/classic-lemonade.svg'),
+    ingredients: ['Fresh Lemons', 'Cane Sugar', 'Spring Water'],
+    featured: true,
+    badge: 'Best Seller',
+    rating: 4.9,
+  },
+  {
+    id: 'strawberry-lemonade',
+    name: 'Strawberry Lemonade',
+    tagline: 'Berry bright, perfectly tart.',
+    description:
+      'Our classic lemonade swirled with house macerated strawberries and finished with a berry ice float.',
+    price: 7,
+    category: 'lemonade',
+    sizes: ['16 oz', '24 oz'],
+    sizePrice: { '16 oz': 7, '24 oz': 9 },
+    image: asset('/assets/products/strawberry-lemonade.svg'),
+    ingredients: ['Fresh Lemons', 'Strawberries', 'Cane Sugar'],
+    isNew: true,
+    rating: 4.8,
+  },
+  {
+    id: 'lavender-lemonade',
+    name: 'Lavender Lemonade',
+    tagline: 'Calm, floral, quietly fancy.',
+    description:
+      'Steeped culinary lavender lends a soft perfume to fresh lemon juice — lightly sweetened and endlessly sippable.',
+    price: 7,
+    category: 'lemonade',
+    sizes: ['16 oz', '24 oz'],
+    sizePrice: { '16 oz': 7, '24 oz': 9 },
+    image: asset('/assets/products/lavender-lemonade.svg'),
+    ingredients: ['Fresh Lemons', 'Culinary Lavender', 'Honey'],
+    rating: 4.7,
+  },
+
+  /* --- Italian Ice ---------------------------------------------------- */
+  {
+    id: 'lemon-italian-ice',
+    name: 'Lemon Italian Ice',
+    tagline: 'Frosty, silky, electric.',
+    description:
+      'Slow-churned lemon ice with real zest in every spoonful — dairy-free, gloriously tart and served straight from the freezer.',
+    price: 5,
+    category: 'italian-ice',
+    sizes: ['Single', 'Pint'],
+    sizePrice: { Single: 5, Pint: 14 },
+    image: asset('/assets/products/lemon-italian-ice.svg'),
+    ingredients: ['Fresh Lemons', 'Zest', 'Cane Sugar'],
+    featured: true,
+    rating: 4.9,
+  },
+  {
+    id: 'cherry-italian-ice',
+    name: 'Cherry Italian Ice',
+    tagline: 'Deep red, double cherry.',
+    description:
+      'Ripe dark cherries blended into a velvety ice with a squeeze of lime to keep every bite bright.',
+    price: 5,
+    category: 'italian-ice',
+    sizes: ['Single', 'Pint'],
+    sizePrice: { Single: 5, Pint: 14 },
+    image: asset('/assets/products/cherry-italian-ice.svg'),
+    ingredients: ['Dark Cherries', 'Lime', 'Cane Sugar'],
+    rating: 4.8,
+  },
+  {
+    id: 'mango-chile-italian-ice',
+    name: 'Mango Chile Italian Ice',
+    tagline: 'Sweet heat, frozen solid.',
+    description:
+      'Ataulfo mango whipped into silk-smooth ice and dusted with a whisper of chile-lime salt. Sweet first, gentle warmth after.',
+    price: 6,
+    category: 'italian-ice',
+    sizes: ['Single', 'Pint'],
+    sizePrice: { Single: 6, Pint: 16 },
+    image: asset('/assets/products/mango-chile-italian-ice.svg'),
+    ingredients: ['Ataulfo Mango', 'Chile-Lime Salt', 'Lime'],
+    seasonal: true,
+    rating: 4.9,
+  },
 ]
+
+// Every product gets a video slot by convention: drop an mp4 named after
+// the product id into public/assets/products/videos/ and it just plays.
+for (const product of products) {
+  product.video = product.video ?? asset(`${PRODUCT_VIDEO_DIR}/${product.id}.mp4`)
+}
 
 export const getProduct = (id: string) => products.find((p) => p.id === id)
 
@@ -224,7 +321,10 @@ export const getFeatured = () => products.filter((p) => p.featured)
 export const getSeasonal = () => products.filter((p) => p.seasonal)
 
 export const getCategory = (id: string) =>
-  CATEGORIES.find((c) => c.id === id)
+  MENU_SECTIONS.find((c) => c.id === id)
+
+export const getProductsBySection = (id: CategoryId) =>
+  products.filter((p) => p.category === id)
 
 export const formatPrice = (value: number) =>
   new Intl.NumberFormat('en-US', {

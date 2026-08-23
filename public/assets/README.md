@@ -10,7 +10,7 @@ public/assets/
 │   ├── logo.svg               # Vector logo (used for the OG/social card)
 │   ├── logo.png               # Business logo (nav, footer, favicon source)
 │   └── mark.svg               # Logo mark
-├── products/                  # Product card images (generated placeholders)
+├── products/                  # Product poster images (generated placeholders)
 │   ├── classic-caramel-apple.svg
 │   ├── candy-apple.svg
 │   ├── candy-cane-apple.svg
@@ -19,7 +19,14 @@ public/assets/
 │   ├── toffee-crunch-apple.svg
 │   ├── pumpkin-spice-apple.svg
 │   ├── party-apple-box.svg
-│   └── apple-gift-box.svg
+│   ├── apple-gift-box.svg
+│   ├── classic-lemonade.svg
+│   ├── strawberry-lemonade.svg
+│   ├── lavender-lemonade.svg
+│   ├── lemon-italian-ice.svg
+│   ├── cherry-italian-ice.svg
+│   ├── mango-chile-italian-ice.svg
+│   └── videos/                # Looping menu videos — one <product-id>.mp4 each (see videos/README.md)
 ├── journey/                   # Chapter photos for the scroll journey
 │   ├── hero.png/.svg          # Scene 1 — The Apple (full-screen backdrop)
 │   ├── orchard.png/.svg       # Scene 2 — The Orchard
