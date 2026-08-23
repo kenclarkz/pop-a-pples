@@ -15,11 +15,11 @@ export function CartDrawer() {
   return (
     <>
       <div
-        className="fixed inset-0 z-60 bg-black/50 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm transition-opacity"
         onClick={() => setOpen(false)}
         aria-hidden
       />
-      <aside className="fixed right-0 top-0 z-70 h-full w-full max-w-md bg-espresso border-l border-cream/10 flex flex-col animate-slide-in">
+      <aside className="fixed right-0 top-0 z-[70] h-full w-full max-w-md bg-espresso border-l border-cream/10 flex flex-col animate-slide-in">
         <div className="flex items-center justify-between p-6 border-b border-cream/10">
           <h2 className="font-serif text-2xl font-light">Your Order</h2>
           <button

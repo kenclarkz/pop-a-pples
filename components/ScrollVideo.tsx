@@ -213,7 +213,7 @@ export default function ScrollVideo() {
         {/* Scroll hint, fades once the visitor starts scrolling */}
         <div
           className={cn(
-            'absolute inset-x-0 bottom-10 flex justify-center transition-opacity duration-700',
+            'absolute inset-x-0 bottom-28 flex justify-center transition-opacity duration-700 sm:bottom-32',
             scrolled ? 'opacity-0' : 'opacity-100'
           )}
         >
