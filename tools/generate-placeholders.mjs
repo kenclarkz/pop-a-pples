@@ -282,6 +282,72 @@ function generateProducts() {
         ${appleShape({ cx: W * 0.32, cy: W * 0.3, s: 0.7, body: C.red, shade: C.redLight })}
         ${appleShape({ cx: W * 0.62, cy: W * 0.34, s: 0.55, body: C.caramel, shade: C.caramelLight })}`,
     },
+    {
+      id: 'classic-lemonade',
+      label: 'Classic Squeezed Lemonade',
+      render: (W) => `
+        <path d="M${W * 0.36} ${W * 0.28} L${W * 0.64} ${W * 0.28} L${W * 0.6} ${W * 0.78} L${W * 0.4} ${W * 0.78} Z" fill="#F6EFE3" opacity="0.25"/>
+        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#F2D06B"/>
+        <circle cx="${W * 0.63}" cy="${W * 0.27}" r="${W * 0.07}" fill="#F2D06B"/>
+        <circle cx="${W * 0.63}" cy="${W * 0.27}" r="${W * 0.045}" fill="#F9E9AE"/>
+        <rect x="${W * 0.485}" y="${W * 0.16}" width="${W * 0.03}" height="${W * 0.13}" rx="${W * 0.015}" fill="#ECE0CB" transform="rotate(14 ${W * 0.5} ${W * 0.22})"/>`,
+    },
+    {
+      id: 'strawberry-lemonade',
+      label: 'Strawberry Lemonade',
+      render: (W) => `
+        <path d="M${W * 0.36} ${W * 0.28} L${W * 0.64} ${W * 0.28} L${W * 0.6} ${W * 0.78} L${W * 0.4} ${W * 0.78} Z" fill="#F6EFE3" opacity="0.25"/>
+        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#E86A5B"/>
+        <path d="M${W * 0.37} ${W * 0.44} Q${W * 0.5} ${W * 0.4} ${W * 0.63} ${W * 0.46} L${W * 0.62} ${W * 0.56} Q${W * 0.5} ${W * 0.52} ${W * 0.38} ${W * 0.55} Z" fill="#F6EFE3" opacity="0.35"/>
+        <g fill="${C.redDark}">
+          <ellipse cx="${W * 0.68}" cy="${W * 0.72}" rx="${W * 0.05}" ry="${W * 0.065}"/>
+          <ellipse cx="${W * 0.32}" cy="${W * 0.66}" rx="${W * 0.04}" ry="${W * 0.05}"/>
+        </g>`,
+    },
+    {
+      id: 'lavender-lemonade',
+      label: 'Lavender Lemonade',
+      render: (W) => `
+        <path d="M${W * 0.36} ${W * 0.28} L${W * 0.64} ${W * 0.28} L${W * 0.6} ${W * 0.78} L${W * 0.4} ${W * 0.78} Z" fill="#F6EFE3" opacity="0.25"/>
+        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#C4A8E0"/>
+        <g stroke="#8f74b8" stroke-width="7" stroke-linecap="round">
+          <line x1="${W * 0.58}" y1="${W * 0.24}" x2="${W * 0.64}" y2="${W * 0.12}"/>
+        </g>
+        <g fill="#B99BD8">
+          <ellipse cx="${W * 0.61}" cy="${W * 0.19}" rx="10" ry="16" transform="rotate(35 ${W * 0.61} ${W * 0.19})"/>
+          <ellipse cx="${W * 0.65}" cy="${W * 0.12}" rx="8" ry="13" transform="rotate(35 ${W * 0.65} ${W * 0.12})"/>
+        </g>`,
+    },
+    {
+      id: 'lemon-italian-ice',
+      label: 'Lemon Italian Ice',
+      render: (W) => `
+        <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.gold}"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="#F2D06B"/>
+        <circle cx="${W * 0.45}" cy="${W * 0.35}" r="${W * 0.05}" fill="#F9E9AE" opacity="0.9"/>
+        <circle cx="${W * 0.56}" cy="${W * 0.43}" r="${W * 0.04}" fill="#F9E9AE" opacity="0.8"/>`,
+    },
+    {
+      id: 'cherry-italian-ice',
+      label: 'Cherry Italian Ice',
+      render: (W) => `
+        <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.red}"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="${C.redDark}"/>
+        <circle cx="${W * 0.45}" cy="${W * 0.35}" r="${W * 0.05}" fill="${C.redLight}" opacity="0.9"/>
+        <circle cx="${W * 0.57}" cy="${W * 0.44}" r="${W * 0.04}" fill="${C.redLight}" opacity="0.8"/>`,
+    },
+    {
+      id: 'mango-chile-italian-ice',
+      label: 'Mango Chile Italian Ice',
+      render: (W) => `
+        <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.caramel}"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="#F0A03C"/>
+        ${sprinkles({ cx: W * 0.5, cy: W * 0.38, colors: ['#A62E20', '#C8894B', '#F6EFE3'], n: 12, r: 90 })}
+        <circle cx="${W * 0.45}" cy="${W * 0.33}" r="${W * 0.045}" fill="#F7BE72" opacity="0.9"/>`,
+    },
   ]
 
   for (const p of P) {

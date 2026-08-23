@@ -1,50 +1,46 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { products, CATEGORIES, formatPrice, Product } from '@/data/products'
+import {
+  MENU_SECTIONS,
+  getProductsBySection,
+  type CategoryId,
+} from '@/data/products'
 import { ProductGrid } from '@/components/ProductGrid'
-import { CategoryFilter } from '@/components/CategoryFilter'
-import { ProductCard } from '@/components/ProductCard'
-import { PriceDisplay } from '@/components/PriceDisplay'
 import { Reveal } from '@/components/Reveal'
 import { asset } from '@/lib/paths'
 import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
-import { Sparkles, Tag, Shield, Truck, Heart } from 'lucide-react'
+import { Tag, Shield, Truck, Heart } from 'lucide-react'
 
 export default function ProductsPage() {
-  const [activeCategory, setActiveCategory] = useState<string>('all')
-  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'newest'>('featured')
+  const [activeSection, setActiveSection] = useState<CategoryId>(
+    MENU_SECTIONS[0].id
+  )
 
-  const filteredProducts = useMemo(() => {
-    let result = activeCategory === 'all'
-      ? products
-      : products.filter((p) => p.category === activeCategory)
-
-    switch (sortBy) {
-      case 'price-asc':
-        result = [...result].sort((a, b) => a.price - b.price)
-        break
-      case 'price-desc':
-        result = [...result].sort((a, b) => b.price - a.price)
-        break
-      case 'newest':
-        result = [...result].sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0))
-        break
-      default: // featured first
-        result = [...result].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+  // Highlight the sub-section currently in view while scrolling.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id as CategoryId)
+          }
+        }
+      },
+      { rootMargin: '-35% 0px -55% 0px' }
+    )
+    for (const { id } of MENU_SECTIONS) {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
     }
-    return result
-  }, [activeCategory, sortBy])
+    return () => observer.disconnect()
+  }, [])
 
-  const featuredProducts = useMemo(() =>
-    products.filter((p) => p.featured && !p.seasonal).slice(0, 2),
-  [])
-
-  const seasonalProducts = useMemo(() =>
-    products.filter((p) => p.seasonal),
-  [])
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   return (
     <main className="min-h-screen">
@@ -55,12 +51,12 @@ export default function ProductsPage() {
         <div className="relative z-10 max-w-4xl text-center">
           <Reveal className="eyebrow">The Menu</Reveal>
           <Reveal delay={0.1} className="display mt-3 text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.05] mb-6">
-            Hand-coated apples,<br />made to order.
+            Three ways to<br />beat the heat.
           </Reveal>
           <Reveal delay={0.2} className="text-lg sm:text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed mb-10">
-            Every apple is picked at peak and hand-dipped the day it&apos;s ordered.
-            Choose your favourite, select a size, and we&apos;ll have it ready for
-            delivery or pickup.
+            Scroll through Gourmet Apples, Lemonade and Italian Ice — every item
+            plays a short film of the real thing. Pick your favourite, choose a
+            size, and we&apos;ll have it ready for delivery or pickup.
           </Reveal>
           <Reveal delay={0.3} className="flex flex-wrap items-center justify-center gap-3">
             <span className="flex items-center gap-2 text-cream/60 text-sm">
@@ -70,6 +66,11 @@ export default function ProductsPage() {
               <Shield className="w-5 h-5" strokeWidth={2} /> Secure checkout
             </span>
           </Reveal>
+          <Reveal delay={0.4}>
+            <button onClick={() => scrollToSection(MENU_SECTIONS[0].id)} className="btn-primary mt-8">
+              Explore the Menu
+            </button>
+          </Reveal>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" style={{ animationDuration: '2s' }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold">
@@ -78,123 +79,83 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Category Filter */}
-      <section className="px-6 py-10 border-y border-cream/10 bg-espresso/50 backdrop-blur sticky top-20 z-40">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <CategoryFilter
-              categories={CATEGORIES.filter(c => c.id !== 'all')}
-              active={activeCategory}
-              onChange={setActiveCategory}
-            />
-            <div className="flex items-center gap-3">
-              <label htmlFor="sort" className="text-cream/50 text-sm uppercase tracking-[0.15em]">Sort</label>
-              <select
-                id="sort"
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="px-4 py-2 bg-cream/5 border border-cream/10 rounded-full text-cream text-sm uppercase tracking-[0.1em] focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold appearance-none bg-no-repeat bg-right pr-10"
-                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23C9A96A' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")` }}
-              >
-                <option value="featured">Featured First</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-                <option value="newest">Newest First</option>
-              </select>
-            </div>
-          </div>
+      {/* Sub-section navigation — sticks under the main nav while scrolling */}
+      <nav
+        aria-label="Menu sub-sections"
+        className="sticky top-16 sm:top-20 z-40 px-6 py-4 border-y border-cream/10 bg-espresso/80 backdrop-blur"
+      >
+        <div className="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto no-scrollbar">
+          {MENU_SECTIONS.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => scrollToSection(section.id)}
+              aria-current={activeSection === section.id ? 'true' : undefined}
+              className={cn(
+                'whitespace-nowrap px-5 py-2.5 rounded-full text-[0.7rem] uppercase tracking-[0.2em] font-medium transition-all duration-300',
+                activeSection === section.id
+                  ? 'bg-gold text-espresso shadow-[0_4px_20px_-4px_rgba(201,137,75,0.5)]'
+                  : 'bg-cream/5 border border-cream/10 text-cream/70 hover:border-gold hover:text-gold'
+              )}
+            >
+              {section.label}
+            </button>
+          ))}
+          <span className="ml-auto hidden md:flex items-center gap-2 text-[0.62rem] uppercase tracking-[0.25em] text-cream/40 whitespace-nowrap">
+            Scroll to browse
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
+          </span>
         </div>
-      </section>
+      </nav>
 
-      {/* Featured Hero Product */}
-      {activeCategory === 'all' && featuredProducts.length > 0 && (
-        <section className="px-6 py-10">
-          <div className="max-w-7xl mx-auto">
-            <Reveal className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
-                <img
-                  src={featuredProducts[0].image}
-                  alt={featuredProducts[0].name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-3">
-                  <span className="px-3 py-1 bg-gold/20 text-gold text-[0.6rem] uppercase tracking-[0.2em] rounded-full self-start">
-                    Best Seller
-                  </span>
-                  <h3 className="font-serif text-3xl font-light text-cream">{featuredProducts[0].name}</h3>
-                  <p className="text-cream/70">{featuredProducts[0].tagline}</p>
-                  <PriceDisplay price={featuredProducts[0].price} className="text-2xl self-start" />
+      {/* The three menu sub-sections */}
+      {MENU_SECTIONS.map((section, i) => {
+        const items = getProductsBySection(section.id)
+        return (
+          <section
+            key={section.id}
+            id={section.id}
+            aria-labelledby={`${section.id}-title`}
+            className={cn(
+              'relative px-6 py-20 sm:py-28 border-t border-cream/10',
+              i % 2 === 1 && 'bg-espresso-dark/40'
+            )}
+          >
+            <div className="max-w-7xl mx-auto">
+              {/* Section header */}
+              <header className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <Reveal className="eyebrow">
+                    {String(i + 1).padStart(2, '0')} · {site.name}
+                  </Reveal>
+                  <Reveal delay={0.1}>
+                    <h2
+                      id={`${section.id}-title`}
+                      className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light leading-tight mt-3"
+                    >
+                      {section.label}
+                    </h2>
+                  </Reveal>
+                  <Reveal delay={0.2}>
+                    <p className="text-cream/60 max-w-xl mt-4 leading-relaxed">
+                      {section.description}
+                    </p>
+                  </Reveal>
                 </div>
-              </div>
-              <div className="space-y-6">
-                <Reveal delay={0.1} className="eyebrow">Chef&apos;s Recommendation</Reveal>
-                <Reveal delay={0.2}>
-                  <h2 className="font-serif text-3xl sm:text-4xl font-light leading-tight mb-4">
-                    {featuredProducts[0].description}
-                  </h2>
+                <Reveal delay={0.25} className="shrink-0">
+                  <span className="px-4 py-2 rounded-full bg-cream/5 border border-cream/10 text-[0.65rem] uppercase tracking-[0.2em] text-cream/50">
+                    {items.length} {items.length === 1 ? 'item' : 'items'}
+                  </span>
                 </Reveal>
-                <Reveal delay={0.3} className="flex flex-wrap gap-2">
-                  {featuredProducts[0].ingredients.map((ing, i) => (
-                    <span key={i} className="px-3 py-1.5 bg-cream/5 border border-cream/10 rounded-full text-sm text-cream/80">
-                      {ing}
-                    </span>
-                  ))}
-                </Reveal>
-                <Reveal delay={0.4} className="flex gap-3">
-                  <button className="btn-primary">
-                    Order {featuredProducts[0].name}
-                  </button>
-                  <button className="btn-ghost">
-                    View Details
-                  </button>
-                </Reveal>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      )}
+              </header>
 
-      {/* Seasonal Banner */}
-      {activeCategory === 'all' && seasonalProducts.length > 0 && (
-        <section className="px-6 py-6 bg-gradient-to-r from-caramel/10 to-gold/5 border-y border-cream/10">
-          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <Sparkles className="w-6 h-6 text-gold" strokeWidth={2} />
-              <span className="font-serif text-lg">Seasonal Flavours</span>
-              <span className="px-2 py-1 bg-blush/20 text-blush text-[0.6rem] uppercase tracking-[0.2em] rounded-full">
-                Limited Time
-              </span>
+              {/* Product videos */}
+              <ProductGrid products={items} />
             </div>
-            <div className="flex items-center gap-4">
-              {seasonalProducts.map((p) => (
-                <Link key={p.id} href={`/products/${p.id}`} className="flex items-center gap-2 px-4 py-2 bg-cream/5 border border-cream/10 rounded-full text-sm hover:border-gold hover:text-gold transition-colors">
-                  <img src={p.image} alt={p.name} className="w-8 h-8 rounded-full object-cover" />
-                  <span>{p.name}</span>
-                  <PriceDisplay price={p.price} showCurrency={false} className="text-sm" />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Product Grid */}
-      <section className="px-6 py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-            <div>
-              <Reveal className="eyebrow">Available Now</Reveal>
-              <Reveal delay={0.1}>
-                <h2 className="font-serif text-3xl sm:text-4xl font-light">
-                  {filteredProducts.length} {filteredProducts.length === 1 ? 'apple' : 'apples'} found
-                </h2>
-              </Reveal>
-            </div>
-          </div>
-          <ProductGrid products={filteredProducts} />
-        </div>
-      </section>
+          </section>
+        )
+      })}
 
       {/* CTA Section */}
       <section className="px-6 py-20 bg-espresso-dark border-t border-cream/10">
@@ -205,7 +166,7 @@ export default function ProductsPage() {
           </Reveal>
           <Reveal delay={0.2} className="text-cream/60 mb-8 max-w-xl mx-auto">
             Planning an event? We create bespoke apple boxes, branded gift sets,
-            and wholesale orders for cafés. Minimum 48 hours notice.
+            lemonade carts, and wholesale orders for cafés. Minimum 48 hours notice.
           </Reveal>
           <Reveal delay={0.3} className="flex flex-wrap items-center justify-center gap-3">
             <Link href="/contact" className="btn-primary">Start a Custom Order</Link>
@@ -220,7 +181,7 @@ export default function ProductsPage() {
           {[
             { icon: Truck, label: 'Free Shipping', desc: 'On orders over $100' },
             { icon: Shield, label: 'Secure Checkout', desc: 'Stripe encrypted payments' },
-            { icon: Heart, label: 'Made Fresh', desc: 'Baked to order daily' },
+            { icon: Heart, label: 'Made Fresh', desc: 'Prepared to order daily' },
             { icon: Tag, label: 'Gift Ready', desc: 'Beautiful packaging included' },
           ].map((item, i) => (
             <Reveal key={item.label} delay={i * 0.1} className="flex flex-col items-center gap-2">

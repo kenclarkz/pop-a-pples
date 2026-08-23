@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '@/lib/cart'
 import { Plus, Minus, Heart, ShoppingBag, Tag, Sparkles, Truck, Shield } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { formatPrice, Product } from '@/data/products'
 import { PriceDisplay } from '@/components/PriceDisplay'
+import { ProductVideo } from '@/components/ProductVideo'
 
 interface ProductCardProps {
   product: Product
@@ -46,14 +46,13 @@ export function ProductCard({ product, featured = false }: ProductCardProps) {
       'group relative overflow-hidden rounded-3xl bg-cream/[0.03] border border-cream/10 transition-all duration-700 hover:border-gold/30',
       featured && 'lg:col-span-2'
     )}>
-      {/* Image */}
+      {/* Video */}
       <div className="relative aspect-[4/5] overflow-hidden">
-        <Image
-          src={product.image}
+        <ProductVideo
+          src={product.video}
+          poster={product.image}
           alt={product.name}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="transition-transform duration-700 group-hover:scale-105"
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent" />
@@ -188,7 +187,7 @@ function QuickViewModal({ product, onClose }: { product: Product; onClose: () =>
 
           <div className="grid md:grid-cols-2 gap-8 mb-6">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-cream/5 relative">
-              <Image src={product.image} alt={product.name} fill className="object-cover" sizes="50vw" />
+              <ProductVideo src={product.video} poster={product.image} alt={product.name} />
             </div>
             <div className="space-y-4">
               <PriceDisplay price={product.sizePrice?.[selectedSize] ?? product.price} compareAt={product.compareAt} className="text-2xl" />
