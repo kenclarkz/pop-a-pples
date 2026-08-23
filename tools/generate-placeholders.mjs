@@ -256,6 +256,57 @@ function generateProducts() {
         </g>`,
     },
     {
+      id: 'turtle',
+      label: 'Turtle',
+      render: (W) => `
+        ${appleShape({ cx: W / 2, cy: W * 0.44, s: 1.95, body: C.chocolate, shade: C.cocoa })}
+        ${caramelDrips({ x: W / 2 - 34, y: W * 0.4, s: 1.95, w: 7, len: 34, color: C.caramel })}
+        <g fill="#B07A45" stroke="${C.caramelDark}" stroke-width="2">
+          <ellipse cx="${W / 2 - 60}" cy="${W * 0.6}" rx="16" ry="11" transform="rotate(-24 ${W / 2 - 60} ${W * 0.6})"/>
+          <ellipse cx="${W / 2 + 55}" cy="${W * 0.58}" rx="16" ry="11" transform="rotate(20 ${W / 2 + 55} ${W * 0.58})"/>
+          <ellipse cx="${W / 2}" cy="${W * 0.68}" rx="16" ry="11" transform="rotate(-8 ${W / 2} ${W * 0.68})"/>
+          <ellipse cx="${W / 2 + 110}" cy="${W * 0.72}" rx="13" ry="9" transform="rotate(32 ${W / 2 + 110} ${W * 0.72})"/>
+          <ellipse cx="${W / 2 - 115}" cy="${W * 0.74}" rx="13" ry="9" transform="rotate(-30 ${W / 2 - 115} ${W * 0.74})"/>
+        </g>`,
+    },
+    {
+      id: 'peanut-butter-galore',
+      label: 'Peanut Butter Galore',
+      render: (W) => `
+        ${appleShape({ cx: W / 2, cy: W * 0.44, s: 1.95, body: C.caramel, shade: C.caramelLight })}
+        ${sprinkles({ cx: W / 2, cy: W * 0.44, colors: ['#6B4226', '#A96A2F', '#F6EFE3', '#D9A36A'], n: 22, r: 150 })}
+        <g fill="${C.caramelLight}" stroke="${C.stem}" stroke-width="3">
+          <path d="M${W / 2 - 130} ${W * 0.68} a14 14 0 1 1 26 -8 a14 14 0 1 1 26 8 q-10 12 -26 12 q-16 0 -26 -12 Z"/>
+          <path d="M${W / 2 + 80} ${W * 0.66} a13 13 0 1 1 24 -7 a13 13 0 1 1 24 7 q-9 11 -24 11 q-15 0 -24 -11 Z"/>
+        </g>
+        <g stroke="${C.stem}" stroke-width="2" opacity="0.7">
+          <line x1="${W / 2 - 118}" y1="${W * 0.64}" x2="${W / 2 - 92}" y2="${W * 0.74}"/>
+          <line x1="${W / 2 + 94}" y1="${W * 0.62}" x2="${W / 2 + 118}" y2="${W * 0.72}"/>
+        </g>`,
+    },
+    {
+      id: 'rockstar',
+      label: 'Rockstar',
+      render: (W) => `
+        ${appleShape({ cx: W / 2, cy: W * 0.44, s: 1.95, body: C.red, shade: C.redLight })}
+        <polygon points="${W / 2 - 70},${W * 0.34} ${W / 2 - 50},${W * 0.42} ${W / 2 - 78},${W * 0.44}" fill="${C.white}" opacity="0.85"/>
+        <polygon points="${W / 2 + 40},${W * 0.3} ${W / 2 + 62},${W * 0.38} ${W / 2 + 30},${W * 0.42}" fill="${C.white}" opacity="0.75"/>
+        <polygon points="${W / 2 - 10},${W * 0.5} ${W / 2 + 14},${W * 0.56} ${W / 2 - 20},${W * 0.62}" fill="${C.gold}" opacity="0.85"/>
+        <polygon points="${W / 2 + 90},${W * 0.5} ${W / 2 + 112},${W * 0.58} ${W / 2 + 76},${W * 0.6}" fill="${C.white}" opacity="0.65"/>
+        <path d="M${W / 2 + 130} ${W * 0.24} l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6 Z" fill="${C.gold}"/>
+        <path d="M${W / 2 - 140} ${W * 0.56} l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5 Z" fill="${C.white}" opacity="0.8"/>`,
+    },
+    {
+      id: 'mvp',
+      label: 'MVP',
+      render: (W) => `
+        ${appleShape({ cx: W / 2, cy: W * 0.44, s: 1.95, body: C.caramel, shade: C.caramelLight })}
+        <path d="M${W / 2 - 90} ${W * 0.4} Q${W / 2 - 40} ${W * 0.48} ${W / 2 + 10} ${W * 0.4}" stroke="${C.chocolate}" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.85"/>
+        <path d="M${W / 2 + 20} ${W * 0.48} Q${W / 2 + 70} ${W * 0.56} ${W / 2 + 120} ${W * 0.46}" stroke="${C.chocolate}" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.7"/>
+        ${sprinkles({ cx: W / 2, cy: W * 0.44, colors: ['#F6EFE3', '#C8402E', '#4E9C4E', '#F2C063'], n: 18, r: 150 })}
+        <path d="M${W / 2 + 120} ${W * 0.22} l8 20 20 8 -20 8 -8 20 -8 -20 -20 -8 20 -8 Z" fill="${C.gold}"/>`,
+    },
+    {
       id: 'party-apple-box',
       label: 'The Orchard Party Box',
       render: (W) => `
