@@ -9,7 +9,6 @@ import {
 } from '@/data/products'
 import { ProductRail } from '@/components/ProductRail'
 import { Reveal } from '@/components/Reveal'
-import { asset } from '@/lib/paths'
 import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
 import { Tag, Shield, Truck, Heart, ChevronsLeftRight } from 'lucide-react'
@@ -43,41 +42,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <main className="min-h-screen">
-      {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center justify-center px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-espresso via-espresso to-espresso-dark" />
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url("${asset('/assets/brand/hero-pattern.svg')}")` }} />
-        <div className="relative z-10 max-w-4xl text-center">
-          <Reveal className="eyebrow">The Menu</Reveal>
-          <Reveal delay={0.1} className="display mt-3 text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.05] mb-6">
-            Three ways to<br />beat the heat.
-          </Reveal>
-          <Reveal delay={0.2} className="text-lg sm:text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed mb-10">
-            Glide side to side through Gourmet Apples, Lemonade and Italian Ice
-            — every item plays a short film of the real thing. Pick your
-            favourite, choose a size, and we&apos;ll have it ready for delivery
-            or pickup.
-          </Reveal>
-          <Reveal delay={0.3} className="flex flex-wrap items-center justify-center gap-3">
-            <span className="flex items-center gap-2 text-cream/60 text-sm">
-              <Truck className="w-5 h-5" strokeWidth={2} /> Local delivery &amp; pickup
-            </span>
-            <span className="flex items-center gap-2 text-cream/60 text-sm">
-              <Shield className="w-5 h-5" strokeWidth={2} /> Made fresh daily
-            </span>
-          </Reveal>
-          <Reveal delay={0.4}>
-            <button onClick={() => scrollToSection(MENU_SECTIONS[0].id)} className="btn-primary mt-8">
-              Explore the Menu
-            </button>
-          </Reveal>
-        </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-pulse" style={{ animationDuration: '2.4s' }}>
-          <ChevronsLeftRight className="w-7 h-7 text-gold" strokeWidth={1.5} />
-        </div>
-      </section>
-
+    <main className="min-h-screen pt-14 lg:pt-16">
       {/* Sub-section navigation — sticks under the main nav while scrolling */}
       <nav
         aria-label="Menu sub-sections"
