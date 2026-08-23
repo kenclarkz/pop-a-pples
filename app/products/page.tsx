@@ -61,10 +61,10 @@ export default function ProductsPage() {
           </Reveal>
           <Reveal delay={0.3} className="flex flex-wrap items-center justify-center gap-3">
             <span className="flex items-center gap-2 text-cream/60 text-sm">
-              <Truck className="w-5 h-5" strokeWidth={2} /> Free shipping on $100+
+              <Truck className="w-5 h-5" strokeWidth={2} /> Local delivery &amp; pickup
             </span>
             <span className="flex items-center gap-2 text-cream/60 text-sm">
-              <Shield className="w-5 h-5" strokeWidth={2} /> Secure checkout
+              <Shield className="w-5 h-5" strokeWidth={2} /> Made fresh daily
             </span>
           </Reveal>
           <Reveal delay={0.4}>
@@ -176,9 +176,9 @@ export default function ProductsPage() {
       <section className="px-6 py-12 border-t border-cream/10">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { icon: Truck, label: 'Free Shipping', desc: 'On orders over $100' },
-            { icon: Shield, label: 'Secure Checkout', desc: 'Stripe encrypted payments' },
-            { icon: Heart, label: 'Made Fresh', desc: 'Prepared to order daily' },
+            { icon: Truck, label: 'Local Delivery', desc: 'Delivery & pickup available' },
+            { icon: Shield, label: 'Made Fresh', desc: 'Hand-coated daily in house' },
+            { icon: Heart, label: 'Made to Order', desc: 'Prepared for your event' },
             { icon: Tag, label: 'Gift Ready', desc: 'Beautiful packaging included' },
           ].map((item, i) => (
             <Reveal key={item.label} delay={i * 0.1} className="flex flex-col items-center gap-2">
