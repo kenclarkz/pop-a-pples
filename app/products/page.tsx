@@ -7,12 +7,12 @@ import {
   getProductsBySection,
   type CategoryId,
 } from '@/data/products'
-import { ProductGrid } from '@/components/ProductGrid'
+import { ProductRail } from '@/components/ProductRail'
 import { Reveal } from '@/components/Reveal'
 import { asset } from '@/lib/paths'
 import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
-import { Tag, Shield, Truck, Heart } from 'lucide-react'
+import { Tag, Shield, Truck, Heart, ChevronsLeftRight } from 'lucide-react'
 
 export default function ProductsPage() {
   const [activeSection, setActiveSection] = useState<CategoryId>(
@@ -54,9 +54,10 @@ export default function ProductsPage() {
             Three ways to<br />beat the heat.
           </Reveal>
           <Reveal delay={0.2} className="text-lg sm:text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed mb-10">
-            Scroll through Gourmet Apples, Lemonade and Italian Ice — every item
-            plays a short film of the real thing. Pick your favourite, choose a
-            size, and we&apos;ll have it ready for delivery or pickup.
+            Glide side to side through Gourmet Apples, Lemonade and Italian Ice
+            — every item plays a short film of the real thing. Pick your
+            favourite, choose a size, and we&apos;ll have it ready for delivery
+            or pickup.
           </Reveal>
           <Reveal delay={0.3} className="flex flex-wrap items-center justify-center gap-3">
             <span className="flex items-center gap-2 text-cream/60 text-sm">
@@ -72,10 +73,8 @@ export default function ProductsPage() {
             </button>
           </Reveal>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" style={{ animationDuration: '2s' }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold">
-            <path d="M12 5v14M19 12l-7 7-7-7"/>
-          </svg>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-pulse" style={{ animationDuration: '2.4s' }}>
+          <ChevronsLeftRight className="w-7 h-7 text-gold" strokeWidth={1.5} />
         </div>
       </section>
 
@@ -101,10 +100,8 @@ export default function ProductsPage() {
             </button>
           ))}
           <span className="ml-auto hidden md:flex items-center gap-2 text-[0.62rem] uppercase tracking-[0.25em] text-cream/40 whitespace-nowrap">
-            Scroll to browse
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M12 5v14M19 12l-7 7-7-7" />
-            </svg>
+            Side-scroll to browse
+            <ChevronsLeftRight className="w-4 h-4" strokeWidth={1.5} />
           </span>
         </div>
       </nav>
@@ -150,8 +147,8 @@ export default function ProductsPage() {
                 </Reveal>
               </header>
 
-              {/* Product videos */}
-              <ProductGrid products={items} />
+              {/* Product videos — side-scrolling rail */}
+              <ProductRail products={items} label={section.label} />
             </div>
           </section>
         )

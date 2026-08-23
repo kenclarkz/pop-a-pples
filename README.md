@@ -113,7 +113,7 @@ node tools/generate-placeholders.mjs
 │   ├── JourneyFireCanvas.tsx    # WebGL fire-burn photo backdrop
 │   ├── ProductCard.tsx          # Ecommerce card + quick view
 │   ├── ProductVideo.tsx         # In-view looping product video (+ poster fallback)
-│   ├── ProductGrid.tsx          # Grid of ProductCards
+│   ├── ProductRail.tsx          # Side-scrolling rail of ProductCards
 │   ├── PriceDisplay.tsx         # Formatted pricing
 │   ├── Navigation.tsx           # Header nav + cart button
 │   ├── Footer.tsx               # Footer + newsletter
