@@ -36,6 +36,7 @@ must match the product `id` in `data/products.ts` exactly:
 | lemon-italian-ice        | italian-ice    | `italian-ice/lemon-italian-ice.mp4`               |
 | cherry-italian-ice       | italian-ice    | `italian-ice/cherry-italian-ice.mp4`              |
 | mango-chile-italian-ice  | italian-ice    | `italian-ice/mango-chile-italian-ice.mp4`         |
+| sunrise-strawberry-ice   | italian-ice    | `italian-ice/sunrise-strawberry-ice.mp4`          |
 
 The folder names must match the category ids in `data/products.ts`
 (`MENU_SECTIONS`). Adding a new menu section automatically expects a matching

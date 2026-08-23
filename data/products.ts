@@ -292,6 +292,22 @@ export const products: Product[] = [
     rating: 4.8,
   },
   {
+    id: 'sunrise-strawberry-ice',
+    name: 'Sunrise Strawberry Ice',
+    tagline: 'Golden-hour strawberries, frozen at their peak.',
+    description:
+      'Sun-ripened strawberries slow-churned into a blushing, silky ice with a bright squeeze of lemon — like sunrise served frosty.',
+    price: 5,
+    category: 'italian-ice',
+    sizes: ['Single', 'Pint'],
+    sizePrice: { Single: 5, Pint: 14 },
+    image: asset('/assets/products/sunrise-strawberry-ice.svg'),
+    ingredients: ['Strawberries', 'Lemon', 'Cane Sugar'],
+    isNew: true,
+    badge: 'New',
+    rating: 4.9,
+  },
+  {
     id: 'mango-chile-italian-ice',
     name: 'Mango Chile Italian Ice',
     tagline: 'Sweet heat, frozen solid.',

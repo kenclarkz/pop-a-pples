@@ -26,6 +26,7 @@ public/assets/
 │   ├── lemon-italian-ice.svg
 │   ├── cherry-italian-ice.svg
 │   ├── mango-chile-italian-ice.svg
+│   ├── sunrise-strawberry-ice.svg
 │   └── videos/                # Looping menu videos in category sub-folders
 │       ├── gourmet-apples/    #   one <product-id>.mp4 each (see videos/README.md)
 │       ├── lemonade/
