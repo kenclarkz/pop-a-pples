@@ -34,6 +34,12 @@ public/assets/
 │       ├── gourmet-apples/    #   one <product-id>.mp4 each (see videos/README.md)
 │       ├── lemonade/
 │       └── italian-ice/
+├── photos/                      # Real product photos in category sub-folders
+│   ├── gourmet-apples/          #   one <product-id>.jpg|jpeg|png|webp each
+│   │                            #   (see photos/README.md) — auto-detected
+│   │                            #   as the poster/fallback for the product video
+│   ├── lemonade/
+│   └── italian-ice/
 ├── journey/                   # Chapter photos for the scroll journey
 │   ├── hero.png/.svg          # Scene 1 — The Apple (full-screen backdrop)
 │   ├── orchard.png/.svg       # Scene 2 — The Orchard

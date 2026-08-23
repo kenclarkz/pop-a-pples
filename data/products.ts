@@ -6,8 +6,9 @@
  *
  * To add a new product, append one object to `products` below.
  * Drop a matching poster image into `/public/assets/products/<id>.png`
- * (or run `node tools/generate-placeholders.mjs`) and a looping product
- * video into `/public/assets/products/videos/<category>/<id>.mp4`.
+ * (or run `node tools/generate-placeholders.mjs`), a looping product
+ * video into `/public/assets/products/videos/<category>/<id>.mp4`, and a
+ * real photo into `/public/assets/products/photos/<category>/<id>.jpg`.
  *
  * Optional future-proof fields you can add per product:
  *   - discount, compareAt   -> sale pricing
@@ -54,6 +55,14 @@ export interface Product {
 
 /** Where product videos live inside /public (one sub-folder per menu category) */
 export const PRODUCT_VIDEO_DIR = '/assets/products/videos'
+
+/**
+ * Where real product photos live inside /public (same one-subfolder-per-
+ * category layout). A photo named `<product-id>.jpg|jpeg|png|webp` here is
+ * auto-detected at runtime and used as the poster/fallback image instead of
+ * the placeholder art in /assets/products.
+ */
+export const PRODUCT_PHOTO_DIR = '/assets/products/photos'
 
 /**
  * The three menu sub-sections. Each renders as its own full-height,
