@@ -208,33 +208,6 @@ function generateProducts() {
         <path d="M${W / 2 + 120} ${W * 0.22} l8 20 20 8 -20 8 -8 20 -8 -20 -20 -8 20 -8 Z" fill="${C.gold}"/>`,
     },
     {
-      id: 'party-apple-box',
-      label: 'The Orchard Party Box',
-      render: (W) => `
-        <rect x="${W * 0.16}" y="${W * 0.3}" width="${W * 0.68}" height="${W * 0.46}" rx="22" fill="${C.caramelDark}"/>
-        <rect x="${W * 0.18}" y="${W * 0.34}" width="${W * 0.64}" height="${W * 0.4}" rx="16" fill="${C.stem}"/>
-        ${[0, 1, 2, 3, 4].map((i) => {
-          const col = i % 3
-          const row = Math.floor(i / 3)
-          const x = W * 0.3 + col * W * 0.2
-          const y = W * 0.5 - row * W * 0.16
-          const body = [C.red, C.caramel, C.chocolate][i % 3]
-          return appleShape({ cx: x, cy: y, s: 0.42, body, shade: C.redLight })
-        }).join('')}
-        <text x="${W / 2}" y="${W * 0.86}" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="${C.gold}" opacity="0.9">Party Box</text>`,
-    },
-    {
-      id: 'apple-gift-box',
-      label: 'The Apple Gift Box',
-      render: (W) => `
-        <rect x="${W * 0.2}" y="${W * 0.44}" width="${W * 0.6}" height="${W * 0.34}" rx="14" fill="${C.caramelLight}"/>
-        <rect x="${W * 0.43}" y="${W * 0.42}" width="${W * 0.14}" height="${W * 0.38}" fill="${C.red}"/>
-        <rect x="${W * 0.2}" y="${W * 0.56}" width="${W * 0.6}" height="${W * 0.08}" fill="${C.red}"/>
-        <path d="M${W * 0.5} ${W * 0.44} Q ${W * 0.5} ${W * 0.3} ${W * 0.62} ${W * 0.24}" stroke="${C.gold}" stroke-width="8" stroke-linecap="round" fill="none"/>
-        ${appleShape({ cx: W * 0.32, cy: W * 0.3, s: 0.7, body: C.red, shade: C.redLight })}
-        ${appleShape({ cx: W * 0.62, cy: W * 0.34, s: 0.55, body: C.caramel, shade: C.caramelLight })}`,
-    },
-    {
       id: 'mango-lemonade',
       label: 'Mango Lemonade',
       render: (W) => `

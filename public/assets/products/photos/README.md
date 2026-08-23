@@ -32,8 +32,6 @@ must match the product `id` in `data/products.ts` exactly:
 | confetti-apple           | gourmet-apples | `gourmet-apples/confetti-apple.jpg`               |
 | pumpkin-spice-apple      | gourmet-apples | `gourmet-apples/pumpkin-spice-apple.jpg`          |
 | candy-cane-apple         | gourmet-apples | `gourmet-apples/candy-cane-apple.jpg`             |
-| party-apple-box          | gourmet-apples | `gourmet-apples/party-apple-box.jpg`              |
-| apple-gift-box           | gourmet-apples | `gourmet-apples/apple-gift-box.jpg`               |
 | mango-lemonade           | lemonade       | `lemonade/mango-lemonade.jpg`                     |
 | strawberry-lemonade      | lemonade       | `lemonade/strawberry-lemonade.jpg`                |
 | blueberry-lemonade       | lemonade       | `lemonade/blueberry-lemonade.jpg`                 |

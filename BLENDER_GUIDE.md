@@ -26,8 +26,6 @@ public/assets/
 │   ├── dark-chocolate-apple.svg
 │   ├── toffee-crunch-apple.svg
 │   ├── pumpkin-spice-apple.svg
-│   ├── party-apple-box.svg
-│   ├── apple-gift-box.svg
 │   └── README.md
 ├── video/
 │   ├── POP.mp4                # Hero scrub video (HEVC)
