@@ -134,7 +134,7 @@ node tools/generate-placeholders.mjs
 ├── public/assets/
 │   ├── brand/logo.png             # Business logo (nav, footer, favicon)
 │   ├── products/*.svg           # Product poster images
-│   ├── products/videos/         # Menu videos — one <product-id>.mp4 per product
+│   ├── products/videos/         # Menu videos — videos/<category>/<product-id>.mp4
 │   ├── journey/                 # Drop chapter photos here (hero, orchard, dip, toppings, set, reveal)
 │   ├── apple/                   # Drop apple.glb here
 │   └── video/                   # Drop POP.mp4 + POP-h264.mp4 here

@@ -26,7 +26,10 @@ public/assets/
 │   ├── lemon-italian-ice.svg
 │   ├── cherry-italian-ice.svg
 │   ├── mango-chile-italian-ice.svg
-│   └── videos/                # Looping menu videos — one <product-id>.mp4 each (see videos/README.md)
+│   └── videos/                # Looping menu videos in category sub-folders
+│       ├── gourmet-apples/    #   one <product-id>.mp4 each (see videos/README.md)
+│       ├── lemonade/
+│       └── italian-ice/
 ├── journey/                   # Chapter photos for the scroll journey
 │   ├── hero.png/.svg          # Scene 1 — The Apple (full-screen backdrop)
 │   ├── orchard.png/.svg       # Scene 2 — The Orchard
