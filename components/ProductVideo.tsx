@@ -13,17 +13,20 @@ interface ProductVideoProps {
 }
 
 /**
- * Extension variants tried in order when the default `.mp4` source fails,
- * so uploads like `Cherry.MP4`, `.webm` or `.mov` play without renaming.
+ * Extension variants tried in order when the default `.mp4` source fails.
+ * Every letter-casing of the mp4 extension is covered (`.MP4`, `.Mp4`,
+ * `.mP4`) because GitHub Pages is case-sensitive, plus common alternate
+ * formats (`.webm`, `.mov`) — so uploads play without renaming.
  */
-const FALLBACK_EXTENSIONS = ['.MP4', '.webm', '.mov'] as const
+const FALLBACK_EXTENSIONS = ['.MP4', '.Mp4', '.mP4', '.webm', '.mov'] as const
 
 /**
  * Looping product video that plays while scrolled into view and pauses
  * off-screen. If the video file is missing or fails to decode, the poster
  * image is rendered instead so cards never look broken. When the default
- * source 404s (e.g. the upload used an uppercase extension), common
- * variants are tried before falling back to the poster.
+ * source 404s (e.g. the upload used a differently-cased extension), every
+ * mp4 casing and common alternate formats are tried before falling back
+ * to the poster.
  */
 export function ProductVideo({ src, poster, alt, className }: ProductVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)

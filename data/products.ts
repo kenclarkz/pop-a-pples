@@ -40,7 +40,8 @@ export interface Product {
   /** Poster frame shown before/until the product video loads */
   image: string
   /** Looping product video — defaults to /assets/products/videos/<category>/<id>.mp4
-   *  (.MP4/.webm/.mov variants are detected automatically at runtime) */
+   *  (any extension casing like .MP4, plus .webm/.mov variants, are detected
+   *  automatically at runtime) */
   video?: string
   ingredients: string[]
   featured?: boolean
@@ -311,8 +312,9 @@ export const products: Product[] = [
 
 // Every product gets a video slot by convention: drop an mp4 named after
 // the product id into the category's sub-folder of
-// public/assets/products/videos/ and it just plays. (Uppercase extensions
-// like .MP4 and .webm/.mov uploads are handled by ProductVideo's fallback.)
+// public/assets/products/videos/ and it just plays. (Any extension casing
+// like .MP4/.Mp4 and .webm/.mov uploads are handled by ProductVideo's
+// fallback.)
 for (const product of products) {
   product.video =
     product.video ??
