@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { formatPrice, Product } from '@/data/products'
 import { PriceDisplay } from '@/components/PriceDisplay'
 import { ProductVideo } from '@/components/ProductVideo'
+import { useProductPhoto } from '@/lib/photos'
 
 interface ProductCardProps {
   product: Product
@@ -17,6 +18,10 @@ interface ProductCardProps {
 export function ProductCard({ product, className }: ProductCardProps) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   const [showQuickView, setShowQuickView] = useState(false)
+  // A real photo dropped into /assets/products/photos/<category>/ replaces
+  // the generated placeholder as poster/fallback for the product video.
+  const photo = useProductPhoto(product.category, product.id)
+  const poster = photo ?? product.image
 
   const badgeContent = product.badge
     ? product.badge
@@ -40,7 +45,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
       <div className="relative aspect-[4/5] overflow-hidden">
         <ProductVideo
           src={product.video}
-          poster={product.image}
+          poster={poster}
           alt={product.name}
           className="transition-transform duration-700 group-hover:scale-105"
         />
@@ -130,13 +135,13 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
       {/* Quick View Modal */}
       {showQuickView && (
-        <QuickViewModal product={product} onClose={() => setShowQuickView(false)} />
+        <QuickViewModal product={product} poster={poster} onClose={() => setShowQuickView(false)} />
       )}
     </article>
   )
 }
 
-function QuickViewModal({ product, onClose }: { product: Product; onClose: () => void }) {
+function QuickViewModal({ product, poster, onClose }: { product: Product; poster: string; onClose: () => void }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
 
   return (
@@ -155,7 +160,7 @@ function QuickViewModal({ product, onClose }: { product: Product; onClose: () =>
 
           <div className="grid md:grid-cols-2 gap-8 mb-6">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-cream/5 relative">
-              <ProductVideo src={product.video} poster={product.image} alt={product.name} />
+              <ProductVideo src={product.video} poster={poster} alt={product.name} />
             </div>
             <div className="space-y-4">
               <PriceDisplay price={product.sizePrice?.[selectedSize] ?? product.price} compareAt={product.compareAt} className="text-2xl" />

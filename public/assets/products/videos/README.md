@@ -56,6 +56,7 @@ sub-folder here.
 - No audio track (videos are muted and autoplay on scroll)
 - Keep each clip under ~8 MB so the menu stays fast
 
-Until a video exists for a product, its poster image from
-`public/assets/products/<id>.svg|png|jpg` is displayed instead — no code
-changes needed either way.
+Until a video exists for a product, its poster image is displayed instead — a
+real photo from `../photos/<category>/<id>.jpg|jpeg|png|webp` when one has
+been uploaded, otherwise the generated placeholder
+`public/assets/products/<id>.svg|png|jpg`. No code changes are needed either way.
