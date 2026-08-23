@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useCart } from '@/lib/cart'
-import { Plus, Minus, Heart, ShoppingBag, Tag, Sparkles, Truck, Shield } from 'lucide-react'
+import { Heart, Sparkles, Truck, Shield } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { formatPrice, Product } from '@/data/products'
 import { PriceDisplay } from '@/components/PriceDisplay'
@@ -16,21 +15,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, className }: ProductCardProps) {
-  const { add } = useCart()
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   const [showQuickView, setShowQuickView] = useState(false)
-
-  const handleAdd = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    add({
-      id: product.id,
-      name: product.name,
-      price: product.sizePrice?.[selectedSize] ?? product.price,
-      size: selectedSize,
-      image: product.image,
-    })
-  }
 
   const badgeContent = product.badge
     ? product.badge
@@ -121,7 +107,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
           )}
         </div>
 
-        {/* Size selector + Add to cart */}
+        {/* Size selector */}
         {product.sizes.length > 1 && (
           <div className="flex flex-wrap gap-2 pt-2">
             {product.sizes.map((size) => (
@@ -140,14 +126,6 @@ export function ProductCard({ product, className }: ProductCardProps) {
             ))}
           </div>
         )}
-
-        <button
-          onClick={handleAdd}
-          className="btn-primary w-full mt-4 group relative overflow-hidden"
-        >
-          <ShoppingBag className="w-5 h-5 mr-2 transition-transform group-hover:translate-x-1" strokeWidth={2} />
-          Add to Order
-        </button>
       </div>
 
       {/* Quick View Modal */}
@@ -159,21 +137,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
 }
 
 function QuickViewModal({ product, onClose }: { product: Product; onClose: () => void }) {
-  const { add } = useCart()
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
-  const [qty, setQty] = useState(1)
-
-  const handleAdd = () => {
-    add({
-      id: product.id,
-      name: product.name,
-      price: product.sizePrice?.[selectedSize] ?? product.price,
-      size: selectedSize,
-      image: product.image,
-      quantity: qty,
-    })
-    onClose()
-  }
 
   return (
     <div className="fixed inset-0 z-70 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="qv-title">
@@ -217,33 +181,9 @@ function QuickViewModal({ product, onClose }: { product: Product; onClose: () =>
                 </div>
               </div>
 
-              <div>
-                <p className="eyebrow mb-2">Quantity</p>
-                <div className="flex items-center gap-3">
-                  <button onClick={() => setQty(Math.max(1, qty - 1))} className="p-2 rounded bg-cream/5 text-cream/70 hover:text-gold">
-                    <Minus className="w-5 h-5" strokeWidth={2} />
-                  </button>
-                  <span className="w-12 text-center text-lg font-medium">{qty}</span>
-                  <button onClick={() => setQty(qty + 1)} className="p-2 rounded bg-cream/5 text-cream/70 hover:text-gold">
-                    <Plus className="w-5 h-5" strokeWidth={2} />
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-3 pt-4 border-t border-cream/10">
-                <button onClick={handleAdd} className="btn-primary flex-1 min-w-[160px]">
-                  <ShoppingBag className="w-5 h-5 mr-2" strokeWidth={2} />
-                  Add to Order
-                </button>
-                <button className="btn-ghost flex-1 min-w-[160px]">
-                  <Tag className="w-5 h-5 mr-2" strokeWidth={2} />
-                  Gift This
-                </button>
-              </div>
-
               <div className="flex flex-wrap gap-4 text-sm text-cream/50 border-t border-cream/10 pt-4">
-                <div className="flex items-center gap-2"><Truck className="w-4 h-4" strokeWidth={2} /> Free shipping on $100+</div>
-                <div className="flex items-center gap-2"><Shield className="w-4 h-4" strokeWidth={2} /> Secure checkout</div>
+                <div className="flex items-center gap-2"><Truck className="w-4 h-4" strokeWidth={2} /> Local delivery &amp; pickup</div>
+                <div className="flex items-center gap-2"><Shield className="w-4 h-4" strokeWidth={2} /> Available for pickup &amp; events</div>
               </div>
             </div>
           </div>

@@ -39,13 +39,13 @@ clone it, drop in new media, and push a brand-new site.
 - Scroll-linked text reveals, status/progress overlays, and a final CTA — all driven by scroll position
 - A `components/three/` library (Three.js/R3F) remains available for future 3D scenes
 
-### Premium Ecommerce (`/products`)
+### Premium Menu (`/products`)
 - **Modular product data** in `data/products.ts` — add products by appending objects
 - **Category filtering** (Classic, Specialty, Seasonal, Party, Gift)
 - **Size selection** with per-size pricing
-- **Quick-view modal** with ingredients, allergens, quantity
-- **Cart drawer** with localStorage persistence
-- **Stripe-ready** checkout placeholder
+- **Quick-view modal** with ingredients, allergens
+
+> The menu is for display only — purchases happen in person or via the contact page.
 
 ### Additional Pages
 - `/about` — Brand story, timeline, values, process
@@ -64,7 +64,6 @@ clone it, drop in new media, and push a brand-new site.
 | Animation | GSAP 3.12 + ScrollTrigger |
 | Smooth Scroll | Lenis 1.1 |
 | Icons | Lucide React |
-| State | React Context + localStorage |
 
 ---
 
@@ -111,13 +110,12 @@ node tools/generate-placeholders.mjs
 │   ├── FinalProduct.tsx         # Scene 6 (3D reveal)
 │   ├── Flan3D.tsx               # WebGL reveal canvas (procedural apple fallback)
 │   ├── JourneyFireCanvas.tsx    # WebGL fire-burn photo backdrop
-│   ├── ProductCard.tsx          # Ecommerce card + quick view
+│   ├── ProductCard.tsx          # Menu card + quick view
 │   ├── ProductVideo.tsx         # In-view looping product video (+ poster fallback)
 │   ├── ProductRail.tsx          # Side-scrolling rail of ProductCards
 │   ├── PriceDisplay.tsx         # Formatted pricing
-│   ├── Navigation.tsx           # Header nav + cart button
+│   ├── Navigation.tsx           # Header nav
 │   ├── Footer.tsx               # Footer + newsletter
-│   ├── CartDrawer.tsx           # Slide-over cart
 │   ├── Reveal.tsx               # Scroll-triggered fade/slide
 │   ├── SceneShell.tsx           # Pinned section wrapper
 │   └── three/                   # 3D primitives (Lighting, GatedCanvas, GlbModel…)
@@ -128,7 +126,6 @@ node tools/generate-placeholders.mjs
 │   ├── paths.ts                 # Base-path-aware `asset()` helper
 │   ├── anim.ts / lenis.ts       # GSAP + Lenis setup
 │   ├── usePinnedScene.ts        # ScrollTrigger pin + progress hook
-│   ├── cart.tsx                 # Cart context + persistence
 │   ├── assets.ts                # Asset existence detection
 │   └── utils.ts                 # clsx helper
 ├── public/assets/

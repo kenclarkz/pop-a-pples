@@ -255,7 +255,7 @@ images: { unoptimized: true }
 npm run build
 ```
 - Works for GLB/PNG/MP4 in `public/`
-- No server-side features (cart uses localStorage only)
+- No server-side features (static site only)
 
 ### Docker
 ```dockerfile
