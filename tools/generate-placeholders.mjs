@@ -319,8 +319,21 @@ function generateProducts() {
         </g>`,
     },
     {
-      id: 'lemon-italian-ice',
-      label: 'Lemon Italian Ice',
+      id: 'sunrise-strawberry',
+      label: 'Sunrise Strawberry',
+      render: (W) => `
+        <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.red}"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="#E8637A"/>
+        <circle cx="${W * 0.45}" cy="${W * 0.35}" r="${W * 0.05}" fill="#F39AA9" opacity="0.9"/>
+        <circle cx="${W * 0.57}" cy="${W * 0.44}" r="${W * 0.04}" fill="#F39AA9" opacity="0.8"/>
+        <g fill="${C.gold}">
+          <circle cx="${W * 0.42}" cy="${W * 0.47}" r="4"/><circle cx="${W * 0.52}" cy="${W * 0.5}" r="4"/><circle cx="${W * 0.6}" cy="${W * 0.37}" r="4"/>
+        </g>`,
+    },
+    {
+      id: 'lemon-drop',
+      label: 'Lemon Drop',
       render: (W) => `
         <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
         <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.gold}"/>
@@ -329,24 +342,61 @@ function generateProducts() {
         <circle cx="${W * 0.56}" cy="${W * 0.43}" r="${W * 0.04}" fill="#F9E9AE" opacity="0.8"/>`,
     },
     {
-      id: 'cherry-italian-ice',
-      label: 'Cherry Italian Ice',
+      id: 'miami-mango',
+      label: 'Miami Mango',
       render: (W) => `
         <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
-        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.red}"/>
-        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="${C.redDark}"/>
-        <circle cx="${W * 0.45}" cy="${W * 0.35}" r="${W * 0.05}" fill="${C.redLight}" opacity="0.9"/>
-        <circle cx="${W * 0.57}" cy="${W * 0.44}" r="${W * 0.04}" fill="${C.redLight}" opacity="0.8"/>`,
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="#E08A2E"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="#F0A03C"/>
+        <circle cx="${W * 0.45}" cy="${W * 0.34}" r="${W * 0.05}" fill="#F7BE72" opacity="0.9"/>
+        <circle cx="${W * 0.56}" cy="${W * 0.44}" r="${W * 0.04}" fill="#F7BE72" opacity="0.8"/>`,
     },
     {
-      id: 'mango-chile-italian-ice',
-      label: 'Mango Chile Italian Ice',
+      id: 'caramel-apple-ice',
+      label: 'Caramel Apple',
       render: (W) => `
         <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
-        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.caramel}"/>
-        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="#F0A03C"/>
-        ${sprinkles({ cx: W * 0.5, cy: W * 0.38, colors: ['#A62E20', '#C8894B', '#F6EFE3'], n: 12, r: 90 })}
-        <circle cx="${W * 0.45}" cy="${W * 0.33}" r="${W * 0.045}" fill="#F7BE72" opacity="0.9"/>`,
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.caramelDark}"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="${C.caramel}"/>
+        <path d="M${W * 0.36} ${W * 0.38} Q${W * 0.44} ${W * 0.46} ${W * 0.52} ${W * 0.38} T${W * 0.64} ${W * 0.4}" stroke="${C.caramelDark}" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.75"/>
+        <circle cx="${W * 0.45}" cy="${W * 0.33}" r="${W * 0.05}" fill="${C.caramelLight}" opacity="0.9"/>`,
+    },
+    {
+      id: 'cotton-candy',
+      label: 'Cotton Candy',
+      render: (W) => `
+        <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="#B99BD8"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="#8FCBEF"/>
+        <circle cx="${W * 0.55}" cy="${W * 0.36}" r="${W * 0.06}" fill="#F3B6CF" opacity="0.85"/>
+        <circle cx="${W * 0.43}" cy="${W * 0.45}" r="${W * 0.045}" fill="#F3B6CF" opacity="0.7"/>
+        <circle cx="${W * 0.46}" cy="${W * 0.31}" r="${W * 0.04}" fill="${C.white}" opacity="0.6"/>`,
+    },
+    {
+      id: 'twisted-berry',
+      label: 'Twisted Berry',
+      render: (W) => `
+        <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="#6B3D86"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="#8E5AA8"/>
+        <circle cx="${W * 0.44}" cy="${W * 0.34}" r="${W * 0.05}" fill="#B48AC9" opacity="0.9"/>
+        <circle cx="${W * 0.57}" cy="${W * 0.43}" r="${W * 0.04}" fill="#B48AC9" opacity="0.8"/>
+        <g fill="${C.redLight}">
+          <circle cx="${W * 0.42}" cy="${W * 0.47}" r="4"/><circle cx="${W * 0.53}" cy="${W * 0.49}" r="4"/><circle cx="${W * 0.61}" cy="${W * 0.36}" r="4"/>
+        </g>`,
+    },
+    {
+      id: 'island-pina-colada',
+      label: 'Island Piña Colada',
+      render: (W) => `
+        <path d="M${W * 0.33} ${W * 0.42} L${W * 0.67} ${W * 0.42} L${W * 0.62} ${W * 0.8} L${W * 0.38} ${W * 0.8} Z" fill="${C.white}"/>
+        <rect x="${W * 0.31}" y="${W * 0.39}" width="${W * 0.38}" height="${W * 0.05}" rx="${W * 0.02}" fill="${C.leaf}"/>
+        <circle cx="${W * 0.5}" cy="${W * 0.4}" r="${W * 0.17}" fill="#F5DF9A"/>
+        <circle cx="${W * 0.46}" cy="${W * 0.34}" r="${W * 0.055}" fill="${C.white}" opacity="0.85"/>
+        <g transform="translate(${W * 0.58} ${W * 0.26}) rotate(24)">
+          <ellipse cx="0" cy="0" rx="26" ry="10" fill="${C.leaf}"/>
+          <line x1="-20" y1="0" x2="20" y2="0" stroke="${C.leafDark}" stroke-width="3"/>
+        </g>`,
     },
   ]
 

@@ -23,9 +23,13 @@ public/assets/
 │   ├── classic-lemonade.svg
 │   ├── strawberry-lemonade.svg
 │   ├── lavender-lemonade.svg
-│   ├── lemon-italian-ice.svg
-│   ├── cherry-italian-ice.svg
-│   ├── mango-chile-italian-ice.svg
+│   ├── sunrise-strawberry.svg
+│   ├── lemon-drop.svg
+│   ├── miami-mango.svg
+│   ├── caramel-apple-ice.svg
+│   ├── cotton-candy.svg
+│   ├── twisted-berry.svg
+│   ├── island-pina-colada.svg
 │   └── videos/                # Looping menu videos in category sub-folders
 │       ├── gourmet-apples/    #   one <product-id>.mp4 each (see videos/README.md)
 │       ├── lemonade/
