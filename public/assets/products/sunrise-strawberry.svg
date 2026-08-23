@@ -14,9 +14,12 @@
   <rect width="600" height="600" fill="url(#halo)"/>
 
         <path d="M198 252 L402 252 L372 480 L228 480 Z" fill="#FBF7EE"/>
-        <rect x="186" y="234" width="228" height="30" rx="12" fill="#C9A96A"/>
-        <circle cx="300" cy="240" r="102.00000000000001" fill="#F2D06B"/>
-        <circle cx="270" cy="210" r="30" fill="#F9E9AE" opacity="0.9"/>
-        <circle cx="336.00000000000006" cy="258" r="24" fill="#F9E9AE" opacity="0.8"/>
-  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A96A" opacity="0.75">Lemon Italian Ice</text>
+        <rect x="186" y="234" width="228" height="30" rx="12" fill="#C8402E"/>
+        <circle cx="300" cy="240" r="102.00000000000001" fill="#E8637A"/>
+        <circle cx="270" cy="210" r="30" fill="#F39AA9" opacity="0.9"/>
+        <circle cx="341.99999999999994" cy="264" r="24" fill="#F39AA9" opacity="0.8"/>
+        <g fill="#C9A96A">
+          <circle cx="252" cy="282" r="4"/><circle cx="312" cy="300" r="4"/><circle cx="360" cy="222" r="4"/>
+        </g>
+  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A96A" opacity="0.75">Sunrise Strawberry</text>
 </svg>

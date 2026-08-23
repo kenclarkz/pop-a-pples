@@ -37,9 +37,13 @@ must match the product `id` in `data/products.ts` exactly:
 | classic-lemonade         | lemonade       | `lemonade/classic-lemonade.mp4`                   |
 | strawberry-lemonade      | lemonade       | `lemonade/strawberry-lemonade.mp4`                |
 | lavender-lemonade        | lemonade       | `lemonade/lavender-lemonade.mp4`                  |
-| lemon-italian-ice        | italian-ice    | `italian-ice/lemon-italian-ice.mp4`               |
-| cherry-italian-ice       | italian-ice    | `italian-ice/cherry-italian-ice.mp4`              |
-| mango-chile-italian-ice  | italian-ice    | `italian-ice/mango-chile-italian-ice.mp4`         |
+| sunrise-strawberry       | italian-ice    | `italian-ice/sunrise-strawberry.mp4`              |
+| lemon-drop               | italian-ice    | `italian-ice/lemon-drop.mp4`                      |
+| miami-mango              | italian-ice    | `italian-ice/miami-mango.mp4`                     |
+| caramel-apple-ice        | italian-ice    | `italian-ice/caramel-apple-ice.mp4`               |
+| cotton-candy             | italian-ice    | `italian-ice/cotton-candy.mp4`                    |
+| twisted-berry            | italian-ice    | `italian-ice/twisted-berry.mp4`                   |
+| island-pina-colada       | italian-ice    | `italian-ice/island-pina-colada.mp4`              |
 
 The folder names must match the category ids in `data/products.ts`
 (`MENU_SECTIONS`). Adding a new menu section automatically expects a matching
