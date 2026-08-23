@@ -14,9 +14,9 @@
   <rect width="600" height="600" fill="url(#halo)"/>
 
         <path d="M198 252 L402 252 L372 480 L228 480 Z" fill="#FBF7EE"/>
-        <rect x="186" y="234" width="228" height="30" rx="12" fill="#C8402E"/>
-        <circle cx="300" cy="240" r="102.00000000000001" fill="#A62E20"/>
-        <circle cx="270" cy="210" r="30" fill="#D9502F" opacity="0.9"/>
-        <circle cx="341.99999999999994" cy="264" r="24" fill="#D9502F" opacity="0.8"/>
-  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A96A" opacity="0.75">Cherry Italian Ice</text>
+        <rect x="186" y="234" width="228" height="30" rx="12" fill="#A96A2F"/>
+        <circle cx="300" cy="240" r="102.00000000000001" fill="#C8894B"/>
+        <path d="M216 228 Q264 276 312 228 T384 240" stroke="#A96A2F" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.75"/>
+        <circle cx="270" cy="198" r="30" fill="#D9A36A" opacity="0.9"/>
+  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A96A" opacity="0.75">Caramel Apple</text>
 </svg>

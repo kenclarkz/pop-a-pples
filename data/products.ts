@@ -40,7 +40,8 @@ export interface Product {
   /** Poster frame shown before/until the product video loads */
   image: string
   /** Looping product video — defaults to /assets/products/videos/<category>/<id>.mp4
-   *  (.MP4/.webm/.mov variants are detected automatically at runtime) */
+   *  (uploads with any extension casing — .MP4, .Mp4, … — plus .webm/.mov are
+   *  detected automatically at runtime) */
   video?: string
   ingredients: string[]
   featured?: boolean
@@ -308,48 +309,107 @@ export const products: Product[] = [
 
   /* --- Italian Ice ---------------------------------------------------- */
   {
-    id: 'lemon-italian-ice',
-    name: 'Lemon Italian Ice',
-    tagline: 'Frosty, silky, electric.',
+    id: 'sunrise-strawberry',
+    name: 'Sunrise Strawberry',
+    tagline: 'Berry bright, sunrise sweet.',
+    description:
+      'Sun-ripened strawberries slow-churned into a rosy, frosty ice with a squeeze of lime to keep every spoonful glowing.',
+    price: 5,
+    category: 'italian-ice',
+    sizes: ['Single', 'Pint'],
+    sizePrice: { Single: 5, Pint: 8 },
+    image: asset('/assets/products/sunrise-strawberry.svg'),
+    ingredients: ['Strawberries', 'Lime', 'Cane Sugar'],
+    featured: true,
+    rating: 4.9,
+  },
+  {
+    id: 'lemon-drop',
+    name: 'Lemon Drop',
+    tagline: 'Tart, sugary, electric.',
     description:
       'Slow-churned lemon ice with real zest in every spoonful — dairy-free, gloriously tart and served straight from the freezer.',
     price: 5,
     category: 'italian-ice',
     sizes: ['Single', 'Pint'],
-    sizePrice: { Single: 5, Pint: 14 },
-    image: asset('/assets/products/lemon-italian-ice.svg'),
+    sizePrice: { Single: 5, Pint: 8 },
+    image: asset('/assets/products/lemon-drop.svg'),
     ingredients: ['Fresh Lemons', 'Zest', 'Cane Sugar'],
-    featured: true,
     rating: 4.9,
   },
   {
-    id: 'cherry-italian-ice',
-    name: 'Cherry Italian Ice',
-    tagline: 'Deep red, double cherry.',
+    id: 'miami-mango',
+    name: 'Miami Mango',
+    tagline: 'Tropical sunshine, frozen solid.',
     description:
-      'Ripe dark cherries blended into a velvety ice with a squeeze of lime to keep every bite bright.',
+      'Ataulfo mango whipped into silk-smooth ice — pure tropical sunshine with a bright citrus finish.',
     price: 5,
     category: 'italian-ice',
     sizes: ['Single', 'Pint'],
-    sizePrice: { Single: 5, Pint: 14 },
-    image: asset('/assets/products/cherry-italian-ice.svg'),
-    ingredients: ['Dark Cherries', 'Lime', 'Cane Sugar'],
+    sizePrice: { Single: 5, Pint: 8 },
+    image: asset('/assets/products/miami-mango.svg'),
+    ingredients: ['Ataulfo Mango', 'Citrus', 'Cane Sugar'],
+    rating: 4.9,
+  },
+  {
+    id: 'caramel-apple-ice',
+    name: 'Caramel Apple',
+    tagline: 'The orchard classic, churned frosty.',
+    description:
+      'Crisp apple ice rippled with buttery caramel — all the joy of a caramel apple in a spoonful of frost.',
+    price: 5,
+    category: 'italian-ice',
+    sizes: ['Single', 'Pint'],
+    sizePrice: { Single: 5, Pint: 8 },
+    image: asset('/assets/products/caramel-apple-ice.svg'),
+    ingredients: ['Apple', 'Caramel Swirl', 'Cane Sugar'],
+    rating: 4.8,
+    allergens: ['Milk'],
+  },
+  {
+    id: 'cotton-candy',
+    name: 'Cotton Candy',
+    tagline: 'Carnival clouds, straight from the freezer.',
+    description:
+      'Spun-sugar sweetness whipped into a pastel-swirled ice that tastes like the fairground on a summer night.',
+    price: 5,
+    category: 'italian-ice',
+    sizes: ['Single', 'Pint'],
+    sizePrice: { Single: 5, Pint: 8 },
+    image: asset('/assets/products/cotton-candy.svg'),
+    ingredients: ['Cane Sugar', 'Blue Raspberry', 'Vanilla'],
+    isNew: true,
+    rating: 4.7,
+  },
+  {
+    id: 'twisted-berry',
+    name: 'Twisted Berry',
+    tagline: 'A berry medley with a twist.',
+    description:
+      'Strawberries, blackberries and raspberries twisted together into a deep-purple ice bursting with brambly brightness.',
+    price: 5,
+    category: 'italian-ice',
+    sizes: ['Single', 'Pint'],
+    sizePrice: { Single: 5, Pint: 8 },
+    image: asset('/assets/products/twisted-berry.svg'),
+    ingredients: ['Strawberries', 'Blackberries', 'Raspberries'],
     rating: 4.8,
   },
   {
-    id: 'mango-chile-italian-ice',
-    name: 'Mango Chile Italian Ice',
-    tagline: 'Sweet heat, frozen solid.',
+    id: 'island-pina-colada',
+    name: 'Island Piña Colada',
+    tagline: 'Pineapple, coconut, paradise.',
     description:
-      'Ataulfo mango whipped into silk-smooth ice and dusted with a whisper of chile-lime salt. Sweet first, gentle warmth after.',
-    price: 6,
+      'Golden pineapple swirled with creamy coconut into a frosty island escape — no passport required.',
+    price: 5,
     category: 'italian-ice',
     sizes: ['Single', 'Pint'],
-    sizePrice: { Single: 6, Pint: 16 },
-    image: asset('/assets/products/mango-chile-italian-ice.svg'),
-    ingredients: ['Ataulfo Mango', 'Chile-Lime Salt', 'Lime'],
+    sizePrice: { Single: 5, Pint: 8 },
+    image: asset('/assets/products/island-pina-colada.svg'),
+    ingredients: ['Pineapple', 'Coconut Cream', 'Cane Sugar'],
     seasonal: true,
-    rating: 4.9,
+    rating: 4.8,
+    allergens: ['Coconut'],
   },
 ]
 

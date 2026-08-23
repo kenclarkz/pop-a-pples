@@ -19,9 +19,9 @@ public/assets/products/videos/
 One `<product-id>.mp4` per product inside its category folder — the file name
 must match the product `id` in `data/products.ts` exactly:
 
-> **Tip:** lowercase `.mp4` is preferred, but the site also picks up common
-> variations automatically — uppercase extensions like `.MP4` and other
-> formats like `.webm` / `.mov` play without renaming.
+> **Tip:** lowercase `.mp4` is preferred, but the site also picks up any
+> extension casing automatically — `.MP4`, `.Mp4`, `.mP4` — as well as other
+> formats like `.webm` / `.mov`, so uploads play without renaming.
 
 | Product                  | Category       | File                                              |
 | ------------------------ | -------------- | ------------------------------------------------- |
@@ -36,13 +36,14 @@ must match the product `id` in `data/products.ts` exactly:
 | apple-gift-box           | gourmet-apples | `gourmet-apples/apple-gift-box.mp4`               |
 | mango-lemonade           | lemonade       | `lemonade/mango-lemonade.mp4`                     |
 | strawberry-lemonade      | lemonade       | `lemonade/strawberry-lemonade.mp4`                |
-| blueberry-lemonade       | lemonade       | `lemonade/blueberry-lemonade.mp4`                 |
-| strawberry-mango-lemonade    | lemonade   | `lemonade/strawberry-mango-lemonade.mp4`          |
-| mango-blueberry-lemonade     | lemonade   | `lemonade/mango-blueberry-lemonade.mp4`           |
-| strawberry-blueberry-lemonade | lemonade  | `lemonade/strawberry-blueberry-lemonade.mp4`      |
-| lemon-italian-ice        | italian-ice    | `italian-ice/lemon-italian-ice.mp4`               |
-| cherry-italian-ice       | italian-ice    | `italian-ice/cherry-italian-ice.mp4`              |
-| mango-chile-italian-ice  | italian-ice    | `italian-ice/mango-chile-italian-ice.mp4`         |
+| lavender-lemonade        | lemonade       | `lemonade/lavender-lemonade.mp4`                  |
+| sunrise-strawberry       | italian-ice    | `italian-ice/sunrise-strawberry.mp4`              |
+| lemon-drop               | italian-ice    | `italian-ice/lemon-drop.mp4`                      |
+| miami-mango              | italian-ice    | `italian-ice/miami-mango.mp4`                     |
+| caramel-apple-ice        | italian-ice    | `italian-ice/caramel-apple-ice.mp4`               |
+| cotton-candy             | italian-ice    | `italian-ice/cotton-candy.mp4`                    |
+| twisted-berry            | italian-ice    | `italian-ice/twisted-berry.mp4`                   |
+| island-pina-colada       | italian-ice    | `italian-ice/island-pina-colada.mp4`              |
 
 The folder names must match the category ids in `data/products.ts`
 (`MENU_SECTIONS`). Adding a new menu section automatically expects a matching

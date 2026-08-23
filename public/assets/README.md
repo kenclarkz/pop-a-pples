@@ -22,13 +22,14 @@ public/assets/
 │   ├── apple-gift-box.svg
 │   ├── mango-lemonade.svg
 │   ├── strawberry-lemonade.svg
-│   ├── blueberry-lemonade.svg
-│   ├── strawberry-mango-lemonade.svg
-│   ├── mango-blueberry-lemonade.svg
-│   ├── strawberry-blueberry-lemonade.svg
-│   ├── lemon-italian-ice.svg
-│   ├── cherry-italian-ice.svg
-│   ├── mango-chile-italian-ice.svg
+│   ├── lavender-lemonade.svg
+│   ├── sunrise-strawberry.svg
+│   ├── lemon-drop.svg
+│   ├── miami-mango.svg
+│   ├── caramel-apple-ice.svg
+│   ├── cotton-candy.svg
+│   ├── twisted-berry.svg
+│   ├── island-pina-colada.svg
 │   └── videos/                # Looping menu videos in category sub-folders
 │       ├── gourmet-apples/    #   one <product-id>.mp4 each (see videos/README.md)
 │       ├── lemonade/
