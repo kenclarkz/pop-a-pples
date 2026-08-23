@@ -11,10 +11,11 @@ import { ProductVideo } from '@/components/ProductVideo'
 
 interface ProductCardProps {
   product: Product
-  featured?: boolean
+  /** Extra layout classes (e.g. width/snap when rendered inside a rail) */
+  className?: string
 }
 
-export function ProductCard({ product, featured = false }: ProductCardProps) {
+export function ProductCard({ product, className }: ProductCardProps) {
   const { add } = useCart()
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   const [showQuickView, setShowQuickView] = useState(false)
@@ -42,10 +43,13 @@ export function ProductCard({ product, featured = false }: ProductCardProps) {
     : null
 
   return (
-    <article className={cn(
-      'group relative overflow-hidden rounded-3xl bg-cream/[0.03] border border-cream/10 transition-all duration-700 hover:border-gold/30',
-      featured && 'lg:col-span-2'
-    )}>
+    <article
+      data-product-card
+      className={cn(
+        'group relative overflow-hidden rounded-3xl bg-cream/[0.03] border border-cream/10 transition-all duration-700 hover:border-gold/30',
+        className
+      )}
+    >
       {/* Video */}
       <div className="relative aspect-[4/5] overflow-hidden">
         <ProductVideo

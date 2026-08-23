@@ -114,6 +114,16 @@ body {
   scrollbar-width: none;
 }
 
+/* Horizontal product rails (side-scroll menu) */
+.product-rail.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+  scroll-behavior: auto;
+}
+.product-rail.is-dragging * {
+  cursor: grabbing;
+}
+
 @keyframes slide-in {
   from {
     opacity: 0;
