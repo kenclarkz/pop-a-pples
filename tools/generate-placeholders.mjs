@@ -283,13 +283,13 @@ function generateProducts() {
         ${appleShape({ cx: W * 0.62, cy: W * 0.34, s: 0.55, body: C.caramel, shade: C.caramelLight })}`,
     },
     {
-      id: 'classic-lemonade',
-      label: 'Classic Squeezed Lemonade',
+      id: 'mango-lemonade',
+      label: 'Mango Lemonade',
       render: (W) => `
         <path d="M${W * 0.36} ${W * 0.28} L${W * 0.64} ${W * 0.28} L${W * 0.6} ${W * 0.78} L${W * 0.4} ${W * 0.78} Z" fill="#F6EFE3" opacity="0.25"/>
-        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#F2D06B"/>
-        <circle cx="${W * 0.63}" cy="${W * 0.27}" r="${W * 0.07}" fill="#F2D06B"/>
-        <circle cx="${W * 0.63}" cy="${W * 0.27}" r="${W * 0.045}" fill="#F9E9AE"/>
+        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#F2C063"/>
+        <circle cx="${W * 0.63}" cy="${W * 0.27}" r="${W * 0.07}" fill="#F0A03C"/>
+        <circle cx="${W * 0.63}" cy="${W * 0.27}" r="${W * 0.045}" fill="#F7BE72"/>
         <rect x="${W * 0.485}" y="${W * 0.16}" width="${W * 0.03}" height="${W * 0.13}" rx="${W * 0.015}" fill="#ECE0CB" transform="rotate(14 ${W * 0.5} ${W * 0.22})"/>`,
     },
     {
@@ -305,17 +305,63 @@ function generateProducts() {
         </g>`,
     },
     {
-      id: 'lavender-lemonade',
-      label: 'Lavender Lemonade',
+      id: 'blueberry-lemonade',
+      label: 'Blueberry Lemonade',
       render: (W) => `
         <path d="M${W * 0.36} ${W * 0.28} L${W * 0.64} ${W * 0.28} L${W * 0.6} ${W * 0.78} L${W * 0.4} ${W * 0.78} Z" fill="#F6EFE3" opacity="0.25"/>
-        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#C4A8E0"/>
-        <g stroke="#8f74b8" stroke-width="7" stroke-linecap="round">
-          <line x1="${W * 0.58}" y1="${W * 0.24}" x2="${W * 0.64}" y2="${W * 0.12}"/>
+        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#6B5CA8"/>
+        <path d="M${W * 0.37} ${W * 0.44} Q${W * 0.5} ${W * 0.4} ${W * 0.63} ${W * 0.46} L${W * 0.62} ${W * 0.56} Q${W * 0.5} ${W * 0.52} ${W * 0.38} ${W * 0.55} Z" fill="#F6EFE3" opacity="0.3"/>
+        <g fill="#443A70">
+          <circle cx="${W * 0.67}" cy="${W * 0.71}" r="${W * 0.035}"/>
+          <circle cx="${W * 0.73}" cy="${W * 0.65}" r="${W * 0.03}"/>
+          <circle cx="${W * 0.31}" cy="${W * 0.66}" r="${W * 0.032}"/>
         </g>
-        <g fill="#B99BD8">
-          <ellipse cx="${W * 0.61}" cy="${W * 0.19}" rx="10" ry="16" transform="rotate(35 ${W * 0.61} ${W * 0.19})"/>
-          <ellipse cx="${W * 0.65}" cy="${W * 0.12}" rx="8" ry="13" transform="rotate(35 ${W * 0.65} ${W * 0.12})"/>
+        <g fill="#8D80C4">
+          <circle cx="${W * 0.66}" cy="${W * 0.69}" r="${W * 0.01}"/>
+          <circle cx="${W * 0.30}" cy="${W * 0.64}" r="${W * 0.009}"/>
+        </g>`,
+    },
+    {
+      id: 'strawberry-mango-lemonade',
+      label: 'Strawberry Mango Lemonade',
+      render: (W) => `
+        <path d="M${W * 0.36} ${W * 0.28} L${W * 0.64} ${W * 0.28} L${W * 0.6} ${W * 0.78} L${W * 0.4} ${W * 0.78} Z" fill="#F6EFE3" opacity="0.25"/>
+        <path d="M${W * 0.37} ${W * 0.55} L${W * 0.62} ${W * 0.55} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#E86A5B"/>
+        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.62} ${W * 0.56} L${W * 0.38} ${W * 0.56} Z" fill="#F2C063"/>
+        <path d="M${W * 0.36} ${W * 0.56} Q${W * 0.5} ${W * 0.53} ${W * 0.64} ${W * 0.57} L${W * 0.64} ${W * 0.58} Q${W * 0.5} ${W * 0.55} ${W * 0.36} ${W * 0.58} Z" fill="#F6EFE3" opacity="0.4"/>
+        <g fill="${C.redDark}">
+          <ellipse cx="${W * 0.32}" cy="${W * 0.68}" rx="${W * 0.04}" ry="${W * 0.05}"/>
+        </g>
+        <circle cx="${W * 0.68}" cy="${W * 0.42}" r="${W * 0.055}" fill="#F0A03C"/>`,
+    },
+    {
+      id: 'mango-blueberry-lemonade',
+      label: 'Mango Blueberry Lemonade',
+      render: (W) => `
+        <path d="M${W * 0.36} ${W * 0.28} L${W * 0.64} ${W * 0.28} L${W * 0.6} ${W * 0.78} L${W * 0.4} ${W * 0.78} Z" fill="#F6EFE3" opacity="0.25"/>
+        <path d="M${W * 0.37} ${W * 0.55} L${W * 0.62} ${W * 0.55} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#6B5CA8"/>
+        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.62} ${W * 0.56} L${W * 0.38} ${W * 0.56} Z" fill="#F2C063"/>
+        <path d="M${W * 0.36} ${W * 0.56} Q${W * 0.5} ${W * 0.53} ${W * 0.64} ${W * 0.57} L${W * 0.64} ${W * 0.58} Q${W * 0.5} ${W * 0.55} ${W * 0.36} ${W * 0.58} Z" fill="#F6EFE3" opacity="0.4"/>
+        <g fill="#443A70">
+          <circle cx="${W * 0.32}" cy="${W * 0.68}" r="${W * 0.032}"/>
+          <circle cx="${W * 0.68}" cy="${W * 0.66}" r="${W * 0.03}"/>
+        </g>
+        <circle cx="${W * 0.68}" cy="${W * 0.42}" r="${W * 0.055}" fill="#F0A03C"/>`,
+    },
+    {
+      id: 'strawberry-blueberry-lemonade',
+      label: 'Strawberry Blueberry Lemonade',
+      render: (W) => `
+        <path d="M${W * 0.36} ${W * 0.28} L${W * 0.64} ${W * 0.28} L${W * 0.6} ${W * 0.78} L${W * 0.4} ${W * 0.78} Z" fill="#F6EFE3" opacity="0.25"/>
+        <path d="M${W * 0.37} ${W * 0.34} L${W * 0.63} ${W * 0.34} L${W * 0.6} ${W * 0.77} L${W * 0.4} ${W * 0.77} Z" fill="#C4549B"/>
+        <path d="M${W * 0.37} ${W * 0.44} Q${W * 0.5} ${W * 0.4} ${W * 0.63} ${W * 0.46} L${W * 0.62} ${W * 0.56} Q${W * 0.5} ${W * 0.52} ${W * 0.38} ${W * 0.55} Z" fill="#F6EFE3" opacity="0.32"/>
+        <g fill="${C.redDark}">
+          <ellipse cx="${W * 0.31}" cy="${W * 0.66}" rx="${W * 0.04}" ry="${W * 0.05}"/>
+        </g>
+        <g fill="#443A70">
+          <circle cx="${W * 0.68}" cy="${W * 0.71}" r="${W * 0.033}"/>
+          <circle cx="${W * 0.72}" cy="${W * 0.63}" r="${W * 0.028}"/>
+          <circle cx="${W * 0.40}" cy="${W * 0.72}" r="${W * 0.026}"/>
         </g>`,
     },
     {

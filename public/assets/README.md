@@ -20,7 +20,7 @@ public/assets/
 │   ├── pumpkin-spice-apple.svg
 │   ├── party-apple-box.svg
 │   ├── apple-gift-box.svg
-│   ├── classic-lemonade.svg
+│   ├── mango-lemonade.svg
 │   ├── strawberry-lemonade.svg
 │   ├── lavender-lemonade.svg
 │   ├── sunrise-strawberry.svg
