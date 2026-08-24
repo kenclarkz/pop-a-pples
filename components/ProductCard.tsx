@@ -52,7 +52,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent" />
         {/* Badges */}
-        <div className="absolute top-4 left-4 flex flex-col gap-2">
+        <div className="absolute top-3 left-3 flex flex-col gap-1.5">
           {product.featured && (
             <span className="px-3 py-1 bg-gold/20 text-gold text-[0.6rem] uppercase tracking-[0.2em] rounded-full">
               Featured
@@ -70,27 +70,27 @@ export function ProductCard({ product, className }: ProductCardProps) {
           )}
         </div>
         {/* Wishlist */}
-        <button className="absolute top-4 right-4 p-2 rounded-full bg-espresso/80 backdrop-blur text-cream/70 hover:text-gold hover:bg-espresso transition-all" aria-label="Add to wishlist">
-          <Heart className="w-5 h-5" strokeWidth={1.5} />
+        <button className="absolute top-3 right-3 p-1.5 rounded-full bg-espresso/80 backdrop-blur text-cream/70 hover:text-gold hover:bg-espresso transition-all" aria-label="Add to wishlist">
+          <Heart className="w-4 h-4" strokeWidth={1.5} />
         </button>
         {/* Quick view */}
         <button
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowQuickView(true); }}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 btn-ghost px-6 py-2.5 whitespace-nowrap"
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 btn-ghost px-4 py-1.5 text-xs whitespace-nowrap"
         >
-          <Sparkles className="w-4 h-4 mr-2" strokeWidth={2} />
+          <Sparkles className="w-3.5 h-3.5 mr-1.5" strokeWidth={2} />
           Quick View
         </button>
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-4">
+      <div className="p-5 space-y-3">
         <div className="flex items-center justify-between gap-2">
           <p className="eyebrow text-[0.6rem]">{product.category.replace('-', ' ')}</p>
           <PriceDisplay price={product.sizePrice?.[selectedSize] ?? product.price} compareAt={product.compareAt} />
         </div>
 
-        <h3 className="font-serif text-2xl font-light leading-tight group-hover:text-gold transition-colors">
+        <h3 className="font-serif text-xl font-light leading-tight group-hover:text-gold transition-colors">
           <Link href={`/products/${product.id}`} onClick={(e) => e.stopPropagation()}>
             {product.name}
           </Link>

@@ -161,8 +161,8 @@ export function ProductRail({ products, label }: ProductRailProps) {
             key={product.id}
             product={product}
             className={cn(
-              'w-[78vw] shrink-0 snap-start sm:w-[330px] lg:w-[350px]',
-              product.featured && !product.seasonal && 'sm:w-[380px] lg:w-[420px]'
+              'w-[62vw] shrink-0 snap-start sm:w-[270px] lg:w-[290px]',
+              product.featured && !product.seasonal && 'sm:w-[300px] lg:w-[325px]'
             )}
           />
         ))}
