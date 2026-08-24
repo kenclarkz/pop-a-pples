@@ -45,10 +45,7 @@ clone it, drop in new media, and push a brand-new site.
 - **Size selection** with per-size pricing
 - **Quick-view modal** with ingredients, allergens
 
-> The menu is for display only — purchases happen in person or via the contact page.
-
-### Additional Pages
-- `/contact` — Contact form, hours, catering & wholesale inquiries
+> The menu is for display only — purchases happen in person or via email.
 
 ---
 
@@ -95,7 +92,6 @@ node tools/generate-placeholders.mjs
 ├── app/
 │   ├── page.tsx                 # Home (scroll-scrubbed hero video)
 │   ├── products/page.tsx        # Ecommerce menu
-│   ├── contact/page.tsx         # Contact form + info
 │   ├── layout.tsx               # Root layout + providers
 │   └── globals.css              # Design system
 ├── components/
@@ -151,7 +147,6 @@ Everything brand-specific lives in a handful of spots:
 | Name, tagline, contact, nav, chapters | `data/site.ts` |
 | Product catalog, categories, pricing | `data/products.ts` |
 | SEO metadata, social preview | `app/layout.tsx` |
-| Contact copy | `app/contact/page.tsx` |
 | Chapter copy (6 scenes) | `components/HeroApple.tsx` … `components/SetScene.tsx` |
 | Colour palette | `tailwind.config.ts` + `app/globals.css` |
 | Logo / favicon | `public/assets/brand/` + `app/icon.png` |
