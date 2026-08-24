@@ -8,7 +8,8 @@ This folder contains all static assets served directly by Next.js.
 public/assets/
 ├── brand/
 │   ├── logo.svg               # Vector logo (used for the OG/social card)
-│   ├── logo.png               # Business logo (nav, footer, favicon source)
+│   ├── logo.png               # Business logo (nav, footer)
+│   ├── IMG_7249.jpeg          # Site icon source (app/icon.png is generated from this)
 │   └── mark.svg               # Logo mark
 ├── products/                  # Product poster images (generated placeholders)
 │   ├── classic-caramel-apple.svg

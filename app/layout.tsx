@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'A luxury gourmet apples brand. Cinematic storytelling, hand-coated apples and unforgettable moments — made fresh from orchard-picked fruit.',
   keywords: ['apples', 'caramel apples', 'gourmet apples', 'candy apples', 'handmade dessert', 'luxury sweets'],
-  icons: { icon: asset('/assets/brand/logo.png') },
+  icons: { icon: asset('/assets/brand/IMG_7249.jpeg') },
   openGraph: {
     title: "Pop-a-pples — Gourmet Apples, Hand-Coated Daily",
     description:
