@@ -79,13 +79,13 @@ export default function ProductsPage() {
             id={section.id}
             aria-labelledby={`${section.id}-title`}
             className={cn(
-              'relative px-6 py-20 sm:py-28 border-t border-cream/10',
+              'relative px-6 py-14 sm:py-16 border-t border-cream/10',
               i % 2 === 1 && 'bg-espresso-dark/40'
             )}
           >
             <div className="max-w-7xl mx-auto">
               {/* Section header */}
-              <header className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <header className="mb-8">
                 <div>
                   <Reveal className="eyebrow">
                     {String(i + 1).padStart(2, '0')} · {site.name}
@@ -98,17 +98,7 @@ export default function ProductsPage() {
                       {section.label}
                     </h2>
                   </Reveal>
-                  <Reveal delay={0.2}>
-                    <p className="text-cream/60 max-w-xl mt-4 leading-relaxed">
-                      {section.description}
-                    </p>
-                  </Reveal>
                 </div>
-                <Reveal delay={0.25} className="shrink-0">
-                  <span className="px-4 py-2 rounded-full bg-cream/5 border border-cream/10 text-[0.65rem] uppercase tracking-[0.2em] text-cream/50">
-                    {items.length} {items.length === 1 ? 'item' : 'items'}
-                  </span>
-                </Reveal>
               </header>
 
               {/* Product videos — side-scrolling rail */}
