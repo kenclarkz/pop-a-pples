@@ -154,15 +154,15 @@ export function ProductRail({ products, label }: ProductRailProps) {
         role="region"
         aria-label={`${label} — side-scrolling menu`}
         tabIndex={0}
-        className="product-rail group/rail relative -mx-6 flex snap-x items-stretch gap-5 overflow-x-auto rounded-3xl px-6 pb-3 pt-1 outline-none no-scrollbar cursor-grab focus-visible:ring-1 focus-visible:ring-gold/60 [overscroll-behavior-x:contain] lg:gap-7"
+        className="product-rail group/rail relative -mx-6 flex snap-x items-stretch gap-4 overflow-x-auto rounded-3xl px-6 pb-3 pt-1 outline-none no-scrollbar cursor-grab focus-visible:ring-1 focus-visible:ring-gold/60 [overscroll-behavior-x:contain] lg:gap-5"
       >
         {products.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
             className={cn(
-              'w-[62vw] shrink-0 snap-start sm:w-[270px] lg:w-[290px]',
-              product.featured && !product.seasonal && 'sm:w-[300px] lg:w-[325px]'
+              'w-[56vw] shrink-0 snap-start sm:w-[225px] lg:w-[235px]',
+              product.featured && !product.seasonal && 'sm:w-[245px] lg:w-[255px]'
             )}
           />
         ))}

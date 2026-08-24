@@ -42,7 +42,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
       )}
     >
       {/* Video */}
-      <div className="relative aspect-[4/5] overflow-hidden">
+      <div className="relative aspect-square overflow-hidden">
         <ProductVideo
           src={product.video}
           poster={poster}
@@ -84,7 +84,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-5 space-y-3">
+      <div className="p-4 space-y-2.5">
         <div className="flex items-center justify-between gap-2">
           <p className="eyebrow text-[0.6rem]">{product.category.replace('-', ' ')}</p>
           <PriceDisplay price={product.sizePrice?.[selectedSize] ?? product.price} compareAt={product.compareAt} />
