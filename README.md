@@ -124,7 +124,7 @@ node tools/generate-placeholders.mjs
 │   └── utils.ts                 # clsx helper
 ├── public/assets/
 │   ├── brand/logo.png             # Business logo (nav, footer)
-│   ├── brand/IMG_7249.jpeg        # Site icon source (app/icon.png is generated from this)
+│   ├── brand/app-icon.jpeg         # Site icon source (app/icon.png is generated from this)
 │   ├── products/*.svg           # Product poster images
 │   ├── products/videos/         # Menu videos — videos/<category>/<product-id>.mp4
 │   ├── journey/                 # Drop chapter photos here (hero, orchard, dip, toppings, set, reveal)
