@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import {
   MENU_SECTIONS,
   getProductsBySection,
@@ -131,7 +130,7 @@ export default function ProductsPage() {
             lemonade carts, and wholesale orders for cafés. Minimum 48 hours notice.
           </Reveal>
           <Reveal delay={0.3} className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact" className="btn-primary">Start a Custom Order</Link>
+            <a href={`mailto:${site.email}?subject=Custom%20Order`} className="btn-primary">Start a Custom Order</a>
             <a href={`mailto:${site.email}`} className="btn-ghost">Email Us</a>
           </Reveal>
         </div>

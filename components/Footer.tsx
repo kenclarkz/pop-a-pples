@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, type FormEvent } from 'react'
-import { Mail, MapPin, Phone, Clock, ArrowRight, Instagram, Lock } from 'lucide-react'
+import { ArrowRight, Instagram, Lock } from 'lucide-react'
 import { asset } from '@/lib/paths'
 import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
@@ -57,7 +57,7 @@ export function Footer() {
   return (
     <footer className="bg-espresso-dark border-t border-cream/10">
       <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6" aria-label={`${site.name} home`}>
@@ -98,34 +98,6 @@ export function Footer() {
               ))}
             </ul>
           </nav>
-
-          {/* Contact */}
-          <address className="not-italic">
-            <h3 className="eyebrow mb-4">Visit Us</h3>
-            <dl className="space-y-4 text-sm text-cream/70">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 mt-0.5 text-gold flex-shrink-0" aria-hidden />
-                <dd>{site.address}</dd>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-0.5 text-gold flex-shrink-0" aria-hidden />
-                <dd><a href={`tel:${site.phone.replace(/\D/g, '')}`} className="hover:text-gold transition-colors">{site.phone}</a></dd>
-              </div>
-              <div className="flex items-start gap-3">
-                <Mail className="w-4 h-4 mt-0.5 text-gold flex-shrink-0" aria-hidden />
-                <dd><a href={`mailto:${site.email}`} className="hover:text-gold transition-colors">{site.email}</a></dd>
-              </div>
-            </dl>
-            <h3 className="eyebrow mt-8 mb-4">Hours</h3>
-            <dl className="space-y-2 text-sm text-cream/60">
-              {site.hours.map((h, i) => (
-                <div key={i} className="flex justify-between gap-4">
-                  <dt className="text-cream/50">{h.day}</dt>
-                  <dd className="text-cream/80 whitespace-nowrap">{h.time}</dd>
-                </div>
-              ))}
-            </dl>
-          </address>
 
           {/* Newsletter */}
           <div>

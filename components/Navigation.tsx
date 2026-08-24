@@ -30,7 +30,6 @@ export function Navigation() {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'The Menu', href: '/products' },
-    { label: 'Contact', href: '/contact' },
   ]
 
   return (
